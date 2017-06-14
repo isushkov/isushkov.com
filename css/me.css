@@ -1,0 +1,550 @@
+body {
+    background: black url("../icon/background.png") repeat;
+    background-size: 200px;
+}
+
+.meContent {
+    /*margin: 2rem;*/
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.meContent2 {
+    width: 1540px;
+    display: flex;
+    flex-direction: row;
+    /*margin-bottom: 2%;*/
+    justify-content: space-around;
+    /*align-items: center;*/
+}
+
+.me {
+    display: flex;
+    margin: 1rem;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.meImg {
+    border: black solid 0.1rem;
+    width: 290px;
+    max-width: 205px;
+}
+
+.meImg2 {
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.meItem {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /*margin: 2% 0 0 0;*/
+}
+
+.nameBlock {
+    font-size: 1.3rem;
+}
+
+.meItem h2 {
+    margin: 0 0 0.2rem 1.2rem;
+    color: #3a3a3a;
+}
+
+.meRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #3a3a3a;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.meRow h2 {
+    margin: 5%;
+    font-size: 2.5ex;
+    font-weight: 300;
+}
+
+.meRow2 {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    align-items: flex-end;
+    margin: 5%;
+}
+
+.meRow2 .blink {
+    margin: 0;
+    font-size: 2.5ex;
+    font-weight: 300;
+}
+
+.grey {
+    color: #3a3a3a;
+}
+
+.yellow {
+    color: #ebbd00;
+}
+
+.blink {
+    -webkit-animation: blink 2s linear infinite;
+    animation: blink 2s linear infinite;
+
+}
+
+@-webkit-keyframes blink {
+    0% {
+        color: rgb(69, 195, 236);
+    }
+    50% {
+        color: rgb(53, 88, 122);
+    }
+    100% {
+        color: rgb(69, 195, 236);
+    }
+}
+
+@keyframes blink {
+    0% {
+        color: rgb(69, 195, 236);
+    }
+    50% {
+        color: rgb(53, 135, 175);
+    }
+    100% {
+        color: rgb(69, 195, 236);
+    }
+}
+
+.skillsBlock {
+    display: flex;
+    flex-flow: wrap column;
+    margin: 1rem;
+    width: 480px;
+}
+
+.skillsBlock h2 {
+    margin: 0 0 0.1rem 0;
+    color: #3a3a3a;
+}
+
+.skillItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.skillRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.skillRow h2 {
+    margin: 0;
+    color: #3a3a3a;
+    font-size: 1.6em;
+    font-weight: 400;
+}
+
+.toolsBlock {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    /*justify-content: space-between;*/
+    /*max-width: 1200px;*/
+    align-items: center;
+    /*margin: 1rem;*/
+}
+
+.toolsBlock h2 {
+    margin: 0 0 1rem 0.3rem;
+    color: #3a3a3a;
+}
+
+.tools {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-content: space-between;
+}
+
+.toolItem {
+    margin: 0 0.5% 1rem 0.5%;
+    max-width: 110px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toolIcon {
+    width: 100%;
+    max-width: 120px;
+}
+
+.toolName {
+    /*padding: 3% 0 0 0;*/
+    margin: 0;
+    color: #3a3a3a;
+    font-size: 1em;
+    text-align: center;
+}
+
+.toolRating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    padding: 3%;
+    margin: 0;
+}
+
+.toolValue {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.toolGrowth {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.low2 {
+    color: #6e1a1a;
+}
+
+.medium2 {
+    color: rgb(135, 107, 0);
+}
+
+.high2 {
+    color: #009b8c;
+}
+
+.no {
+    -webkit-animation: no 2s linear infinite;
+    animation: no 2s linear infinite;
+}
+
+.low {
+    -webkit-animation: low 2s linear infinite;
+    animation: low 2s linear infinite;
+}
+
+.medium {
+    -webkit-animation: medium 2s linear infinite;
+    animation: medium 2s linear infinite;
+}
+
+.high {
+    -webkit-animation: high 2s linear infinite;
+    animation: high 2s linear infinite;
+}
+
+.no {
+    color: #3a3a3a;
+}
+
+@-webkit-keyframes low {
+    0% {
+        color: #ff0900;
+    }
+    50% {
+        color: #5a1a1a;
+    }
+    100% {
+        color: #ff0900;
+    }
+}
+
+@keyframes low {
+    0% {
+        color: #ff0900;
+    }
+    50% {
+        color: #5a1a1a;
+    }
+    100% {
+        color: #ff0900;
+    }
+}
+
+@-webkit-keyframes medium {
+    0% {
+        color: rgb(255, 215, 3);
+    }
+    50% {
+        color: rgb(105, 77, 0);
+    }
+    100% {
+        color: rgb(255, 215, 3);
+    }
+}
+
+@keyframes medium {
+    0% {
+        color: rgb(255, 215, 3);
+    }
+    50% {
+        color: rgb(105, 77, 0);
+    }
+    100% {
+        color: rgb(255, 215, 3);
+    }
+}
+
+@-webkit-keyframes high {
+    0% {
+        color: #00fffb;
+    }
+    50% {
+        color: #007364;
+    }
+    100% {
+        color: #00fffb;
+    }
+}
+
+@keyframes high {
+    0% {
+        color: #00fffb;
+    }
+    50% {
+        color: #007364;
+    }
+    100% {
+        color: #00fffb;
+    }
+}
+
+.contact2 {
+    width: 100%;
+    /*margin-top: 25px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #3a3a3a;
+    /*background: #0d0d11;*/
+}
+
+.contacts2 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.contact2Item {
+    margin: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*width: 25%;*/
+}
+
+.contacts2 img {
+    width: 100px;
+    height: 100px;
+    padding: 1rem;
+}
+
+/*////////-media-//////*/
+@media (max-width: 1600px) {
+    .meContent2 {
+        width: 100%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1150px) {
+    .meContent {
+        font-size: 1.8ex;
+    }
+
+    .meContent2 {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .me {
+        /*justify-content: center;*/
+        /*align-items: center;*/
+        max-width: 750px;
+        width: 100%;
+        margin: 0;
+        font-size: 1.8ex;
+    }
+
+    .meImg {
+        width: 190px;
+        margin: 0 1rem 0 0;
+        height: 220px;
+    }
+
+    .meItem {
+        /*margin: 0 1rem 0 0;*/
+        width: 100%;
+    }
+
+    .meItem h2 {
+        margin: 0 0 0.5rem 0;
+    }
+
+    .meRow h2 {
+        margin: 0;
+    }
+
+    .meRow2 {
+        margin: 0;
+    }
+
+    .skillsBlock {
+        justify-content: center;
+        /*align-items: center;*/
+        max-width: 750px;
+        width: 100%;
+        margin: 0 1rem 0 1rem;
+        font-size: 1.8ex;
+    }
+
+    .skillsBlock h2 {
+        margin: 0.4rem 0 0.1rem 0;
+    }
+
+    .skillRow h2 {
+        margin: 0;
+    }
+
+    .toolsBlock h2 {
+        margin: 0 0 1rem 0;
+    }
+
+    .tools {
+        flex-flow: wrap row;
+        justify-content: flex-start;
+        max-width: 750px;
+    }
+
+    .toolItem {
+        margin: 0 0.5% 1rem 0.5%;
+        max-width: 80px;
+    }
+
+    .toolIcon {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .meContent {
+        font-size: 1.5ex;
+    }
+
+    .meContent2 {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .me {
+        margin: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .meImg {
+        height: 0;
+        width: 0;
+        opacity: 0;
+        margin: 0 0 -2px 0;
+    }
+
+    .meImg2 {
+        width: 100%;
+        height: 100%;
+        opacity: 100;
+        border: black solid 0.1rem;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .meItem {
+        width: 100%;
+    }
+
+    .nameBlock {
+        font-size: 1.8em;
+        font-weight: 600;
+    }
+
+    .meItem h2 {
+        margin: 0 1rem 0 1rem;
+    }
+
+    .meRow2 {
+        margin: 0 1rem 0 0;
+    }
+
+    .skillsBlock {
+        width: 100%;
+        margin: 0;
+    }
+
+    .skillsBlock h2 {
+        margin: 0.4rem 1rem 0.1rem 1rem;
+    }
+
+    .skillRow h2 {
+        margin: 0 0 0 1rem;
+    }
+
+    .skillRow .blink {
+        margin: 0 1rem 0 0;
+    }
+
+    .tools {
+        flex-flow: wrap row;
+        text-align: center;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .toolsBlock h2 {
+        margin: 0 0 0.7rem 0;
+    }
+
+    .toolItem {
+        margin: 0 0.5% 1rem 0.5%;
+        /*max-width: 90px;*/
+        width: 60px;
+        font-size: 2ex;
+    }
+
+    .toolIcon {
+        width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .meContent {
+        font-size: 1.15ex;
+    }
+
+    .nameBlock {
+        font-size: 1.7em;
+    }
+    .toolItem {
+        font-size: 1.2em;
+    }
+}
