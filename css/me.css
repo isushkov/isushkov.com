@@ -354,12 +354,43 @@ body {
     align-items: center;
     width: 20%;
     /*max-width: 150px;*/
+    font-size: 1.2em;
 }
+
 
 .contacts3 img {
     width: 50px;
     /*height: 100px;*/
     /*padding: 1rem;*/
+}
+
+.image.first, .image.second {
+    /*border:2px solid transparent;*/
+    margin: 0;
+    padding: 0;
+}
+
+.image.first {
+    opacity: 1;
+    display: block;
+    position: absolute;
+    z-index: 100;
+    transition-duration: 0.2s;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    -ms-transition-duration: 0.2s;
+}
+
+.image.first:hover {
+    opacity: 0;
+}
+
+div.ImgField {
+    display: inline-block;
+    background: no-repeat center center;
+    margin: 0;
+    padding: 0;
 }
 
 /*////////-media-//////*/
@@ -446,6 +477,9 @@ body {
 
     .toolIcon {
         width: 100%;
+    }
+    .contact2Item p {
+        font-size: 1.1em;
     }
 }
 
@@ -537,6 +571,14 @@ body {
     .toolIcon {
         width: 100%;
     }
+    .contact2Item p {
+        margin: 0;
+        padding: 0;
+        font-size: 0;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
 }
 
 @media (max-width: 380px) {
@@ -547,7 +589,29 @@ body {
     .nameBlock {
         font-size: 1.7em;
     }
+
     .toolItem {
         font-size: 1.2em;
+    }
+
+    .contacts2 {
+        width: 100%;
+    }
+
+    .contacts3 {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin: 1rem;
+        width: 95%;
+    }
+
+    .contact2Item {
+        /*flex-direction: row;*/
+        justify-content: flex-start;
+        /*!*align-items: center;*!*/
+        /*!*width: 20%;*!*/
+        /*!*max-width: 150px;*!*/
+        margin: 0.2rem;
     }
 }

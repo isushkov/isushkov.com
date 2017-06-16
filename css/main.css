@@ -85,7 +85,7 @@ header {
     width: 50%;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .headerRightItem {
@@ -95,6 +95,7 @@ header {
 
 .linkHeader {
     font-size: 1.5em;
+    font-weight: 300;
 }
 
 a {
@@ -202,7 +203,7 @@ a:hover {
     }
 
     .linkHeader, .contact {
-        font-size: 2.4ex;
+        font-size: 2ex;
     }
     .smiley, .update {
         font-size: 2.2ex;
@@ -217,5 +218,8 @@ a:hover {
     .headerRightItem {
         margin: 0 0 0 10%;
         /*min-width: 100px;*/
+    }
+    .linkHeader {
+        font-weight: 600;
     }
 }

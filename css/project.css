@@ -25,7 +25,8 @@ body {
     flex-direction: row;
     justify-content: space-between;
     background: #232323;
-    padding: 0.02rem;
+    /*padding: 0.02rem;*/
+    /*margin: 2% 0 0 0;*/
 }
 
 /*///-2-///*/
@@ -34,10 +35,12 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin: 1rem 0 0 0;
 }
 
 .projectName {
     color: #646b72;
+    margin: 0 0 0.2rem 0;
 }
 
 /*////-slider-////*/
@@ -291,7 +294,6 @@ figure.projectBlock2:hover h2 {
 .galleryLeft, .galleryRight {
     flex-grow: 1;
     width: 10%;
-
 }
 
 .galleryLinkLeft, .galleryLinkRight {
@@ -329,6 +331,8 @@ figure.projectBlock2:hover h2 {
 
 .indexLeft, .indexRight {
     font-size: 5em;
+    margin: 0;
+    padding: 0;
 }
 
 .empty {
@@ -404,6 +408,9 @@ figure.projectBlock2:hover h2 {
     .toolsText, .toolsTextItem, .descriptionBlockName, .projectName {
         font-size: 1.2em;
     }
+    .projectBlock {
+        margin: 0.5rem 0 0 0;
+    }
 
     .description {
         font-size: 1.1em;
@@ -411,10 +418,6 @@ figure.projectBlock2:hover h2 {
 
     .descriptionBlock {
         width: 80%;
-    }
-
-    .projectName {
-        font-size: 2.2ex;
     }
 
     .empty {
@@ -440,12 +443,12 @@ figure.projectBlock2:hover h2 {
         font-size: 1.1em;
     }
 
-    .descriptionBlock {
-        width: 95%;
+    .projectBlock {
+        margin: 0.3rem 0 0 0;
     }
 
-    .projectName {
-        font-size: 1.8ex;
+    .descriptionBlock {
+        width: 95%;
     }
 
     .empty {
@@ -478,5 +481,8 @@ figure.projectBlock2:hover h2 {
     .labelImg {
         /*width: 50px;*/
         height: 30px;
+    }
+    .galleryLeft, .galleryRight {
+        width: 15%;
     }
 }
