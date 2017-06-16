@@ -76,6 +76,11 @@ header {
     width: 50%;
 }
 
+.ilyaSushkov {
+    /*margin-bottom: -15px;*/
+    font-size: 2em;
+}
+
 .headerRight {
     width: 50%;
     display: flex;
@@ -84,7 +89,7 @@ header {
 }
 
 .headerRightItem {
-    margin: 0 0 0 5%;
+    margin: 0 0 0 7%;
     /*min-width: 100px;*/
 }
 
@@ -102,11 +107,6 @@ a {
 a:hover {
     color: #00dbb9;
     transition: 0.2s;
-}
-
-.ilyaSushkov {
-    /*margin-bottom: -15px;*/
-    font-size: 2em;
 }
 
 .content {
@@ -135,7 +135,7 @@ a:hover {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -146,6 +146,7 @@ a:hover {
 .footer2 p {
     margin: 0;
     padding: 0;
+    color: #646b72;
 }
 
 .footer2 h2 {
@@ -190,17 +191,31 @@ a:hover {
     }
 
     .ilyaSushkov {
+        font-size: 2.4ex;
+    }
+    .artist {
+        font-size: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        width: 0;
+    }
+
+    .linkHeader, .contact {
+        font-size: 2.4ex;
+    }
+    .smiley, .update {
         font-size: 2.2ex;
     }
-
-    .linkHeader, .smiley, .update, .contact {
-        font-size: 2ex;
-    }
-
     .update2 {
         font-size: 0;
     }
+
     .footer2 {
         margin: 0.5rem;
+    }
+    .headerRightItem {
+        margin: 0 0 0 10%;
+        /*min-width: 100px;*/
     }
 }
