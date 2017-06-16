@@ -5,7 +5,7 @@ body {
 /*//////////-grid-/////////*/
 .grid {
     position: relative;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     width: 100%;
 }
@@ -15,6 +15,7 @@ body {
     float: left;
     overflow: hidden;
     margin: 0;
+    padding: 0;
     text-align: center;
 }
 
@@ -24,6 +25,7 @@ body {
     min-height: 100%;
     max-width: 100%;
     opacity: 0.8;
+    padding: 0.032rem;
 }
 
 .grid figure figcaption {
@@ -71,7 +73,7 @@ body {
 /*////////////////-0-//////////////*/
 figure.blockProject {
     background: #101010;
-    padding: 0.031rem;
+    /*padding: 0.031rem;*/
 }
 
 figure.blockProject img {
@@ -124,7 +126,7 @@ figure.blockProject:hover h2 {
 }
 
 /*////////-media-//////*/
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
     .blockProject {
         width: 20%;
     }
@@ -138,7 +140,7 @@ figure.blockProject:hover h2 {
     }
 }
 
-@media (min-width: 600px) and (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 1024px) {
     .blockProject {
         width: 33.3%;
     }
@@ -149,6 +151,9 @@ figure.blockProject:hover h2 {
 
     .nameProject {
         font-size: 2.2ex;
+    }
+    .grid figure img {
+        padding: 0.035rem;
     }
 }
 
@@ -163,5 +168,8 @@ figure.blockProject:hover h2 {
 
     .nameProject {
         font-size: 1.8ex;
+    }
+    .grid figure img {
+        padding: 0.031rem;
     }
 }
