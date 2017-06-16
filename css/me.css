@@ -28,7 +28,7 @@ body {
 }
 
 .meImg {
-    border: black solid 0.1rem;
+    border: black solid 0.01rem;
     width: 290px;
     max-width: 205px;
 }
@@ -66,7 +66,7 @@ body {
 }
 
 .meRow h2 {
-    margin: 5%;
+    margin: 0 5% 0 5%;
     font-size: 2.5ex;
     font-weight: 300;
 }
@@ -76,7 +76,7 @@ body {
     flex-direction: column;
     /*justify-content: space-between;*/
     align-items: flex-end;
-    margin: 5%;
+    margin: 0 5% 0 5%;
 }
 
 .meRow2 .blink {
@@ -421,7 +421,7 @@ div.ImgField {
     }
 
     .meImg {
-        width: 190px;
+        width: 150px;
         margin: 0 1rem 0 0;
         height: 220px;
     }
@@ -512,7 +512,7 @@ div.ImgField {
         width: 100%;
         height: 100%;
         opacity: 100;
-        border: black solid 0.1rem;
+        border: black solid 0.01rem;
         margin: 0 0 0.5rem 0;
     }
 
