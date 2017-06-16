@@ -179,7 +179,7 @@ body {
     /*max-height: 800px;*/
     opacity: 0.9;
     flex-basis: auto;
-    border: solid 0.1rem black;
+    border: solid 0.05rem black;
 }
 
 .projectImg:hover {
