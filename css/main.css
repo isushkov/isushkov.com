@@ -217,7 +217,7 @@ a:hover {
         font-size: 1.5em;
     }
 
-    .linkHeader, .update {
+    .linkHeader {
         font-size: 1.4em;
     }
 
@@ -239,6 +239,10 @@ a:hover {
     .linkHeader {
         font-weight: 600;
         font-size: 2ex;
+    }
+
+    .footerCenter {
+        margin: 0.5rem;
     }
 
     .update {
