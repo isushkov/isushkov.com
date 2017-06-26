@@ -81,9 +81,14 @@ img::selection {
 header {
     background: #171717;
     /*border-bottom: 0.1rem solid brown;*/
-    max-width: 1400px;
     width: 100%;
     white-space: nowrap;
+    margin:0 auto;
+}
+
+.header2 {
+    max-width: 1400px;
+    margin:0 auto;
 
     display: flex;
     display: -webkit-box;
@@ -99,7 +104,6 @@ header {
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
-
 }
 
 header p, h2 {
