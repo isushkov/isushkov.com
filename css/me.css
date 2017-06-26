@@ -6,25 +6,62 @@ body {
 .meContent {
     /*margin: 2rem;*/
     width: 100%;
+
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
     flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+
     align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
 }
 
 .meContent2 {
-    width: 1540px;
+    max-width: 1400px;
+    width: 100%;
+
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
     flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+
     /*margin-bottom: 2%;*/
-    justify-content: space-around;
+    justify-content: space-between;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
     /*align-items: center;*/
     white-space: nowrap;
 }
 
 .me {
-    display: flex;
     margin: 1rem;
+
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
     flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+
     align-items: flex-start;
 }
 
@@ -59,8 +96,21 @@ body {
 
 .meRow {
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
     flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+
     justify-content: space-between;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+
     color: #3a3a3a;
     font-size: 1.2em;
     font-weight: 400;
@@ -74,9 +124,21 @@ body {
 
 .meRow2 {
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
     flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+
     /*justify-content: space-between;*/
     align-items: flex-end;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
     margin: 0 5% 0 5%;
 }
 
@@ -143,8 +205,20 @@ body {
 
 .skillRow {
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
     flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+
     justify-content: space-between;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
 }
 
 .skillRow h2 {
@@ -156,12 +230,29 @@ body {
 
 .toolsBlock {
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
     flex-direction: column;
-    margin: 1rem;
-    /*justify-content: space-between;*/
-    /*max-width: 1200px;*/
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+
     align-items: center;
-    /*margin: 1rem;*/
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+
+    margin: 0;
+    /*max-width: 1200px;*/
+    width: 100%;
 }
 
 .toolsBlock h2 {
@@ -170,22 +261,57 @@ body {
 }
 
 .tools {
+    width: 100%;
+    max-width: 1400px;
     margin: 0;
     padding: 0;
+
     display: flex;
-    flex-flow: row;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
+    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+
     justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+
     align-content: space-between;
+    -webkit-align-content: space-between;
+    -ms-flex-line-pack: distribute;
 }
 
 .toolItem {
     margin: 0 0.5% 1rem 0.5%;
-    max-width: 110px;
-    width: 100%;
+    max-width: 7%;
+    /*width: 100%;*/
+
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
     flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+
     justify-content: space-between;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+
     align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
 }
 
 .toolIcon {
@@ -203,8 +329,19 @@ body {
 
 .toolRating {
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+
     flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+
     justify-content: space-around;
+    -webkit-justify-content: space-around;
+
     text-align: center;
     padding: 3%;
     margin: 0;
