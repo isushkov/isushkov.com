@@ -50,6 +50,7 @@ body {
 
 .me {
     margin: 1rem;
+    width: 50%;
 
     display: flex;
     display: -webkit-box;
@@ -62,27 +63,39 @@ body {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
 
+    justify-content: space-between;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+
     align-items: flex-start;
 }
 
 .meImg {
-    border: black solid 0.01rem;
-    width: 290px;
-    max-width: 205px;
+    /*border: black solid 0.01rem;*/
+    width: 33%;
+    min-height: 100%;
+    /*min-height: 150px;*/
+    /*max-width: 205px;*/
+    background: center black url("../img/me.jpg") no-repeat;
+    background-size: cover; /* Масштабируем фон */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
-.meImg2 {
-    height: 0;
-    width: 0;
-    opacity: 0;
-}
+/*.meImg2 {*/
+    /*height: 0;*/
+    /*width: 0;*/
+    /*opacity: 0;*/
+/*}*/
 
 .meItem {
-    width: 400px;
+    width: 66%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    /*margin: 2% 0 0 0;*/
+    justify-content: space-between;
+    margin: 0 1rem 0 1rem;
 }
 
 .nameBlock {
@@ -90,7 +103,7 @@ body {
 }
 
 .meItem h2 {
-    margin: 0 0 0.2rem 1.2rem;
+    margin: 0 0 0.2rem 0;
     color: #3a3a3a;
 }
 
@@ -117,7 +130,7 @@ body {
 }
 
 .meRow h2 {
-    margin: 0 5% 0 5%;
+    /*margin: 0 5% 0 5%;*/
     font-size: 2.5ex;
     font-weight: 300;
 }
@@ -139,7 +152,7 @@ body {
     -webkit-box-align: end;
     -webkit-align-items: flex-end;
     -ms-flex-align: end;
-    margin: 0 5% 0 5%;
+    /*margin: 0 5% 0 5%;*/
 }
 
 .meRow2 .blink {
@@ -190,7 +203,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 1rem;
-    width: 480px;
+    width: 45%;
 }
 
 .skillsBlock h2 {
@@ -589,15 +602,25 @@ div.ImgField {
     }
 }
 
-@media (min-width: 601px) and (max-width: 1150px) {
+@media (min-width: 600px) and (max-width: 1150px) {
     .meContent {
         font-size: 1.8ex;
     }
 
     .meContent2 {
         max-width: 750px;
+
         flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+
         align-items: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+
         /*margin: 1rem;*/
     }
 
@@ -611,14 +634,24 @@ div.ImgField {
     }
 
     .meImg {
-        width: 150px;
+        /*width: 150px;*/
         margin: 0.5rem 0 0 0.5rem;
-        height: 220px;
+        /*height: 220px;*/
+        width: 25%;
+        height: 250px;
+        /*min-height: 150px;*/
+        /*max-width: 205px;*/
+        background: center black url("../img/me.jpg") no-repeat;
+        background-size: cover; /* Масштабируем фон */
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
     }
 
     .meItem {
         /*margin: 0 1rem 0 0;*/
-        width: 100%;
+        width: 70%;
+        max-width: 570px;
         margin: 0.5rem 0.5rem 0 0.5rem;
     }
 
@@ -636,6 +669,10 @@ div.ImgField {
 
     .skillsBlock {
         justify-content: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+
         max-width: 730px;
         width: 98%;
         font-size: 1.8ex;
@@ -655,8 +692,22 @@ div.ImgField {
     }
 
     .tools {
-        flex-flow: wrap row;
+        flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+
         justify-content: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+
+        width: 100%;
         max-width: 750px;
     }
 
@@ -680,34 +731,68 @@ div.ImgField {
 
     .meContent2 {
         flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+
         justify-content: flex-start;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+
         align-items: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
     }
 
     .me {
         margin: 0;
+        width: 100%;
+
         flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+
         justify-content: flex-start;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+
         align-items: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
     }
 
     .meImg {
-        height: 0;
-        width: 0;
-        opacity: 0;
-        margin: 0 0 -2px 0;
+        height: 100%;
+        min-height: 200px;
+        width: 100%;
+        background: black url(../img/me2.jpg) no-repeat;
+        background-size: cover;
+        /*opacity: 0;*/
+        /*margin: 0 0 -2px 0;*/
     }
 
-    .meImg2 {
-        width: 100%;
-        height: 100%;
-        opacity: 100;
-        border: black solid 0.01rem;
-        margin: 0 0 0.5rem 0;
-    }
+    /*.meImg2 {*/
+        /*width: auto;*/
+        /*!*max-width: 600px;*!*/
+        /*height: auto;*/
+
+        /*!*background-size: cover;*!*/
+        /*!*margin: auto;*!*/
+        /*opacity: 100;*/
+        /*border: black solid 0.01rem;*/
+        /*margin: 0 0 0.5rem 0;*/
+    /*}*/
 
     .meItem {
         width: 100%;
+        margin: 1rem 0 0 0;
     }
 
     .nameBlock {
@@ -725,7 +810,7 @@ div.ImgField {
 
     .skillsBlock {
         width: 100%;
-        margin: 0;
+        margin: 0 0 1rem 0;
     }
 
     .skillsBlock h2 {
@@ -741,9 +826,27 @@ div.ImgField {
     }
 
     .tools {
-        flex-flow: wrap row;
-        text-align: center;
+        display: -webkit-flex;
+        -webkit-flex-flow: row wrap;
+        display: flex;
+        flex-flow: row wrap;
+
+        /*flex-direction: row;*/
+        /*-webkit-box-orient: horizontal;*/
+        /*-webkit-box-direction: normal;*/
+        /*-webkit-flex-direction: row;*/
+        /*-ms-flex-direction: row;*/
+
+        /*flex-wrap: wrap;*/
+        /*-webkit-flex-wrap: wrap;*/
+        /*-ms-flex-wrap: wrap;*/
+
         justify-content: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+
+        text-align: center;
         width: 100%;
     }
 
@@ -753,7 +856,7 @@ div.ImgField {
 
     .toolItem {
         margin: 0 0.5% 1rem 0.5%;
-        /*max-width: 90px;*/
+        max-width: 90px;
         width: 60px;
         font-size: 2ex;
     }
@@ -790,8 +893,21 @@ div.ImgField {
 
     .contacts3 {
         flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+
         justify-content: space-between;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+
         align-items: flex-start;
+        -webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+
         margin: 1rem;
         width: 95%;
     }
@@ -799,6 +915,9 @@ div.ImgField {
     .contact2Item {
         /*flex-direction: row;*/
         justify-content: flex-start;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
         /*!*align-items: center;*!*/
         /*!*width: 20%;*!*/
         /*!*max-width: 150px;*!*/
