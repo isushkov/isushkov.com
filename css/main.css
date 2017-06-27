@@ -83,12 +83,12 @@ header {
     /*border-bottom: 0.1rem solid brown;*/
     width: 100%;
     white-space: nowrap;
-    margin:0 auto;
+    margin: 0 auto;
 }
 
 .header2 {
     max-width: 1400px;
-    margin:0 auto;
+    margin: 0 auto;
 
     display: flex;
     display: -webkit-box;
@@ -129,7 +129,7 @@ header p, h2 {
 
 .headerRight {
     /*width: 50%;*/
-    margin: 1rem;
+    margin: 0;
 
     display: flex;
     display: -webkit-box;
@@ -153,8 +153,9 @@ header p, h2 {
     -ms-flex-align: center;
 }
 
-.headerRightItem2 {
-    width: 2.5rem;
+.headerRightItem {
+    /*width: 50%;*/
+    margin: 1rem;
 }
 
 .linkHeader {
@@ -257,8 +258,8 @@ a:hover {
         font-size: 0;
     }
 
-    .headerRightItem2 {
-        width: 1.5rem;
+    .headerRightItem {
+        margin: 0.5rem;
     }
 }
 
@@ -271,16 +272,8 @@ a:hover {
         font-size: 1.8ex;
     }
 
-    .headerRight {
-        margin: 0.5rem;
-    }
-
     .linkHeader {
         font-weight: 400;
         font-size: 1.5ex;
-    }
-
-    .headerRightItem2 {
-        width: 0.7rem;
     }
 }

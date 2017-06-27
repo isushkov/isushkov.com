@@ -27,6 +27,7 @@ body {
 .meContent2 {
     max-width: 1400px;
     width: 100%;
+    white-space: nowrap;
 
     display: flex;
     display: -webkit-box;
@@ -45,7 +46,6 @@ body {
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     /*align-items: center;*/
-    white-space: nowrap;
 }
 
 .me {
@@ -74,6 +74,7 @@ body {
 .meImg {
     /*border: black solid 0.01rem;*/
     width: 33%;
+    min-width: 180px;
     min-height: 100%;
     /*min-height: 150px;*/
     /*max-width: 205px;*/
@@ -85,9 +86,9 @@ body {
 }
 
 /*.meImg2 {*/
-    /*height: 0;*/
-    /*width: 0;*/
-    /*opacity: 0;*/
+/*height: 0;*/
+/*width: 0;*/
+/*opacity: 0;*/
 /*}*/
 
 .meItem {
@@ -266,6 +267,7 @@ body {
     margin: 0;
     /*max-width: 1200px;*/
     width: 100%;
+    white-space: nowrap;
 }
 
 .toolsBlock h2 {
@@ -278,33 +280,18 @@ body {
     max-width: 1400px;
     margin: 0;
     padding: 0;
-
-    display: flex;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-
-    flex-direction: row;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-
-    justify-content: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-
-    align-content: space-between;
-    -webkit-align-content: space-between;
-    -ms-flex-line-pack: distribute;
+    text-align: center;
 }
 
 .toolItem {
     margin: 0 0.5% 1rem 0.5%;
-    max-width: 7%;
-    /*width: 100%;*/
+    width: 7.2%;
+    display: block;
+    position: relative;
+    float: left;
+}
 
+.toolItem2 {
     display: flex;
     display: -webkit-box;
     display: -webkit-flex;
@@ -321,15 +308,17 @@ body {
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
 
-    align-items: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
+    /*align-items: center;*/
+    /*-webkit-box-align: center;*/
+    /*-webkit-align-items: center;*/
+    /*-ms-flex-align: center;*/
 }
 
 .toolIcon {
     width: 100%;
-    max-width: 120px;
+    /*max-width: 120px;*/
+    margin: 0;
+    padding: 0;
 }
 
 .toolName {
@@ -352,10 +341,12 @@ body {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
 
-    justify-content: space-around;
-    -webkit-justify-content: space-around;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
 
-    text-align: center;
+    /*text-align: center;*/
     padding: 3%;
     margin: 0;
 }
@@ -501,7 +492,7 @@ body {
     /*background: #0d0d11;*/
 }
 
-.contacts3 {
+.contact3 {
     width: 100%;
 
     display: flex;
@@ -515,17 +506,17 @@ body {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
 
-    justify-content: space-between;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
 
     align-items: center;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
 
-    margin: 1rem;
+    margin: 0 0 1rem 0;
 }
 
 .contact2Item {
@@ -551,16 +542,13 @@ body {
     -webkit-align-items: center;
     -ms-flex-align: center;
 
-    width: 100%;
+    /*width: 100%;*/
     max-width: 150px;
     font-size: 1.2em;
     margin: 1rem;
 }
 
-.contact2Item p {
-    /*align: center;*/
-}
-.contacts3 img {
+.contact3 img {
     width: 50px;
     /*height: 100px;*/
     /*padding: 1rem;*/
@@ -650,7 +638,7 @@ div.ImgField {
 
     .meItem {
         /*margin: 0 1rem 0 0;*/
-        width: 70%;
+        width: 66%;
         max-width: 570px;
         margin: 0.5rem 0.5rem 0 0.5rem;
     }
@@ -676,7 +664,7 @@ div.ImgField {
         max-width: 730px;
         width: 98%;
         font-size: 1.8ex;
-        margin: 0;
+        margin: 0.2rem 0 1rem 0;
     }
 
     .skillsBlock h2 {
@@ -692,33 +680,25 @@ div.ImgField {
     }
 
     .tools {
-        flex-direction: row;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-
-        flex-wrap: wrap;
-        -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-
-        justify-content: center;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-
         width: 100%;
         max-width: 750px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
     }
 
     .toolItem {
-        margin: 0 0.5% 1rem 0.5%;
-        max-width: 80px;
+        margin: 0 0.6% 1rem 0.6%;
+        width: 13%;
+        display: block;
+        position: relative;
+        float: left;
     }
 
     .toolIcon {
-        width: 100%;
+        /*width: 100%;*/
     }
+
     .contact2Item p {
         font-size: 1.1em;
     }
@@ -779,17 +759,15 @@ div.ImgField {
     }
 
     /*.meImg2 {*/
-        /*width: auto;*/
-        /*!*max-width: 600px;*!*/
-        /*height: auto;*/
-
-        /*!*background-size: cover;*!*/
-        /*!*margin: auto;*!*/
-        /*opacity: 100;*/
-        /*border: black solid 0.01rem;*/
-        /*margin: 0 0 0.5rem 0;*/
+    /*width: auto;*/
+    /*!*max-width: 600px;*!*/
+    /*height: auto;*/
+    /*!*background-size: cover;*!*/
+    /*!*margin: auto;*!*/
+    /*opacity: 100;*/
+    /*border: black solid 0.01rem;*/
+    /*margin: 0 0 0.5rem 0;*/
     /*}*/
-
     .meItem {
         width: 100%;
         margin: 1rem 0 0 0;
@@ -826,10 +804,10 @@ div.ImgField {
     }
 
     .tools {
-        display: -webkit-flex;
-        -webkit-flex-flow: row wrap;
-        display: flex;
-        flex-flow: row wrap;
+        /*display: -webkit-flex;*/
+        /*-webkit-flex-flow: row wrap;*/
+        /*display: flex;*/
+        /*flex-flow: row wrap;*/
 
         /*flex-direction: row;*/
         /*-webkit-box-orient: horizontal;*/
@@ -841,13 +819,15 @@ div.ImgField {
         /*-webkit-flex-wrap: wrap;*/
         /*-ms-flex-wrap: wrap;*/
 
-        justify-content: center;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
+        /*justify-content: center;*/
+        /*-webkit-box-pack: center;*/
+        /*-webkit-justify-content: center;*/
+        /*-ms-flex-pack: center;*/
 
+        margin: 0 0 1rem 0;
         text-align: center;
         width: 100%;
+        /*text-align: center;*/
     }
 
     .toolsBlock h2 {
@@ -855,15 +835,23 @@ div.ImgField {
     }
 
     .toolItem {
-        margin: 0 0.5% 1rem 0.5%;
-        max-width: 90px;
-        width: 60px;
-        font-size: 2ex;
+        margin: 0.2rem;
+        /*font-size: 2.5ex;*/
+        width: 15%;
+        display: block;
+        position: relative;
+        float: left;
+        text-align: center;
     }
 
     .toolIcon {
         width: 100%;
     }
+
+    .contact2Item {
+        width: 90px;
+    }
+
     .contact2Item p {
         margin: 0;
         padding: 0;
@@ -885,13 +873,19 @@ div.ImgField {
 
     .toolItem {
         font-size: 1.2em;
+        margin: 0.3rem;
+        width: 20%;
+        display: block;
+        position: relative;
+        float: left;
+        text-align: center;
     }
 
     .contacts2 {
         width: 100%;
     }
 
-    .contacts3 {
+    .contact3 {
         flex-direction: row;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
@@ -908,7 +902,7 @@ div.ImgField {
         -webkit-align-items: flex-start;
         -ms-flex-align: start;
 
-        margin: 1rem;
+        margin: 1rem 0 1rem 0;
         width: 95%;
     }
 
@@ -922,5 +916,10 @@ div.ImgField {
         /*!*width: 20%;*!*/
         /*!*max-width: 150px;*!*/
         margin: 0.2rem;
+    }
+
+    .meImg {
+        height: 100%;
+        min-height: 150px;
     }
 }
