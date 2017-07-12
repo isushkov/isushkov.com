@@ -470,7 +470,8 @@ body {
 }
 
 .contact2 {
-    /*width: 100%;*/
+    width: 100%;
+    /*margin: 1rem;*/
     /*margin-top: 25px;*/
     display: flex;
     display: -webkit-box;
@@ -542,10 +543,10 @@ body {
     -webkit-align-items: center;
     -ms-flex-align: center;
 
-    /*width: 100%;*/
+    width: 25%;
     max-width: 150px;
     font-size: 1.2em;
-    margin: 1rem;
+    margin: 1rem 0 0 0;
 }
 
 .contact3 img {
@@ -581,6 +582,14 @@ div.ImgField {
     background: no-repeat center center;
     margin: 0;
     padding: 0;
+}
+.contact2Item p {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
 }
 
 /*////////-media-//////*/
@@ -700,7 +709,12 @@ div.ImgField {
     }
 
     .contact2Item p {
-        font-size: 1.1em;
+        margin: 0;
+        padding: 0;
+        font-size: 0;
+        width: 0;
+        height: 0;
+        opacity: 0;
     }
 }
 
