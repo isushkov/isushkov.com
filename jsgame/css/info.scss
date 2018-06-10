@@ -1,0 +1,93 @@
+.info {
+    border: 1px solid #000;
+    background: #111;
+    width: 1000px;
+    height: 100px;
+
+    .house-info {
+        display: flex;
+        flex-direction: column;
+        display: none;
+
+        .title {
+            margin: 5px;
+        }
+
+        .house-items {
+            display: flex;
+            flex-direction: row;
+
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #222;
+            background: #000;
+            color: #010;
+
+            .null {
+                color: rgba(#000, 0); 
+            }
+            .price {
+                color: #999; 
+                font-weight: normal;
+            }
+            .price-int {
+                color: #fc0; 
+                font-weight: normal;
+            }
+            .info-create-house {
+                cursor: pointer;
+                margin: 5px;
+                padding: 5px;
+                border: 1px solid #050;
+                background: #010;
+                color: #0c0;
+                
+                &:hover {
+                    border: 1px solid #055;
+                    background: #011;
+                    color: #0cc;
+                }
+            }
+            .info-create-men {
+                cursor: pointer;
+                margin: 5px;
+                padding: 5px;
+                border: 1px solid #050;
+                background: #010;
+                color: #0c0;
+
+                &:hover {
+                    border: 1px solid #055;
+                    background: #011;
+                    color: #0cc;
+                }
+            }
+            .info-message {
+                margin: 5px;
+                padding: 5px;
+                border: 1px solid #550;
+                background: #110;
+                color: #ff0;
+                display: none;
+            }
+            .exit-build {
+                cursor: pointer;
+                margin: 5px;
+                padding: 5px;
+                width: 20px;
+                border: 1px solid #500;
+                background: #100;
+                color: #f00;
+
+                display: none;
+                justify-content: center;
+                
+                &:hover {
+                    border: 1px solid #f00;
+                    background: #600;
+                    color: #f00;
+                }
+            }
+        }
+    }
+}
