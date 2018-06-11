@@ -1,0 +1,279 @@
+.battlefield {
+    border: 1px solid #000;
+    background-image: url(../img/grass.jpg);
+    width: 700px;
+    height: 520px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    .battlefield-head {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .gold-info {
+            height: 16px;
+            display: flex;
+            align-items: center;
+            width: 200px;
+            p {
+                margin: 0;
+                padding: 0;
+            }
+            .gold-count {
+                margin-left: 5px;
+                color: #ff0;
+            }
+        }
+        .next-turn {
+            cursor: pointer;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            p {
+                margin: 0;
+                padding: 0;
+            }
+            &.wait {
+                color: rgba(#fc0, 1);
+                border: 1px solid rgba(#cc0, 0.4);
+                background-color: rgba(#cc0, 0.1);
+
+                &:hover {
+                    color: #ff0;
+                    border: 1px solid rgba(#ff0, 1);
+                    background-color: rgba(#660, 0.6);
+                }
+            }
+            &.go {
+                color: #0ff;
+                border: 1px solid rgba(#0aa, 1);
+                background-color: rgba(#060, 0.3);
+
+                &:hover {
+                    color: #0ff;
+                    border: 1px solid rgba(#0ff, 1);
+                    background-color: rgba(#066, 0.6);
+                }
+            }
+        }
+    }
+    .end-game-win {
+        display: flex;
+        flex-direction: column;
+        width: 18px;
+        height: 18px;
+        border: 1px solid rgba(#0ff, 0.3);
+        background-color: rgba(#022, 0.6);
+    }
+    .end-game-lose {
+        display: flex;
+        flex-direction: column;
+        width: 18px;
+        height: 18px;
+        border: 1px solid rgba(#f00, 0.4);
+        background-color: rgba(#200, 0.8);
+    }
+    .win-message {
+        display: none;
+        width: 298px;
+        height: 98px;
+        position: relative; 
+        bottom: 380px;
+        left: 200px;
+        border: 1px solid #066;
+        background-color: #011;
+        justify-content: center;
+        p {
+            align-self: center;
+            color: #0cc;
+        }
+    }
+    .lose-message {
+        display: none;
+        width: 298px;
+        height: 98px;
+        position: relative; 
+        bottom: 380px;
+        left: 200px;
+        border: 1px solid #600;
+        background-color: #200;
+        justify-content: center;
+        p {
+            align-self: center;
+            color: #df0000;
+        }
+    }
+    .cell {
+        display: flex;
+        flex-direction: column;
+        width: 18px;
+        height: 18px;
+        border: 1px solid rgba(#000, 0.7);
+        background-color: rgba(#000, 0.6);
+
+        &:hover {
+            border: 1px solid #090;
+            background-color: rgba(#000, 0.3);
+        }
+        &.house {
+            border: 1px solid rgba(#000, 0.9);
+            background-color: rgba(#000, 0.8);
+            background-image: url(../img/house.png);
+            &:hover {
+                border: 1px solid rgba(#0f0, 0.8);
+                background-color: rgba(#010, 0.8);
+            }
+        }
+        &.men {
+            border: 1px solid rgba(#000, 1);
+            background-color: rgba(#000, 0.8);
+            background-image: url(../img/men.png);
+            &:hover {
+                border: 1px solid rgba(#0f0, 0.8);
+                background-color: rgba(#010, 0.8);
+            }
+        }
+
+        &.select {
+            border: 1px solid #0d0;
+            background-color: rgba(#010, 0.8);
+            &:hover {
+                border: 1px solid #0f0;
+                background-color: rgba(#020, 0.8);
+            }
+        }
+        &.build-men-ok,
+         {
+            border: 1px solid rgba(#0ff, 0.2);
+            background-color: rgba(#022, 0.6);
+            &:hover {
+                border: 1px solid #0ff;
+                background-color: rgba(#033, 0.8);
+                background-image: url(../img/men.png);
+            }
+        }
+        &.build-men-error-empty {
+            &:hover {
+                border: 1px solid #f00;
+                background-color: rgba(#600, 0.8);
+                background-image: url(../img/men.png);
+            }
+        }
+        &.build-men-error {
+            &:hover {
+                border: 1px solid #f00;
+                background-color: rgba(#600, 0.8);
+            }
+        }
+        &.build-house-ok {
+            border: 1px solid rgba(#0ff, 0.2);
+            background-color: rgba(#022, 0.6);
+            &:hover {
+                border: 1px solid #0ff;
+                background-color: rgba(#066, 0.6);
+                background-image: url(../img/house.png);
+            }
+        }
+        &.build-house-error-empty {
+            &:hover {
+                border: 1px solid #f00;
+                background-color: rgba(#600, 0.8);
+                background-image: url(../img/house.png);
+            }
+        }
+        &.build-house-error {
+            &:hover {
+                border: 1px solid #f00;
+                background-color: rgba(#600, 0.8);
+            }
+        }
+
+        &.house-enemy {
+            border: 1px solid rgba(#a00, 1);
+            background-color: rgba(#200, 0.8);
+            background-image: url(../img/house.png);
+        }
+        &.men-enemy {
+            border: 1px solid rgba(#a00, 1);
+            background-color: rgba(#200, 0.8);
+            background-image: url(../img/men.png);
+        }
+
+        &.move-men-r1 {
+            border: 1px solid rgba(#0ff, 0.3);
+            background-color: rgba(#022, 0.6);
+            &:hover {
+                border: 1px solid #0ff;
+                background-color: rgba(#033, 0.8);
+            }
+        }
+        &.move-men-r2 {
+            border: 1px solid rgba(#FFD700, 0.35);
+            background-color: rgba(#000, 0.6);
+            &:hover {
+                border: 1px solid #0ff;
+                background-color: rgba(#033, 0.8);
+            }
+        }
+        &.move-men-r3 {
+            border: 1px solid rgba(#FFD700, 0.25);
+            background-color: rgba(#000, 0.6);
+            &:hover {
+                border: 1px solid #0ff;
+                background-color: rgba(#033, 0.8);
+            }
+        }
+        &.scan {
+            border: 1px solid rgba(#000, 0.25);
+            background-color: rgba(#000, 0.7);
+            &:hover {
+                border: 1px solid #0ff;
+                background-color: rgba(#033, 0.8);
+            }
+        }
+        &.men-atack {
+            &:hover {
+                border: 1px solid #f00;
+                background-color: rgba(#600, 1);
+            }
+        }
+        .move-label {
+            display: none;
+            width: 5px;
+            height: 5px;
+
+            &.green {
+                border: 1px solid rgba(#0f0 ,0.5);
+                background-color: rgba(#090 ,0.5);
+            }
+            &.yellow {
+                border: 1px solid rgba(#ff0 ,0.5);
+                background-color: rgba(#990 ,0.5);
+            }
+            &.yellow2 {
+                border: 1px solid rgba(#ff0 ,0.5);
+                background-color: rgba(#990 ,0.5);
+            }
+            &.red {
+                border: 1px solid rgba(#f00 ,0.5);
+                background-color: rgba(#900 ,0.5);
+            }
+        }
+        .xp-wrapper {
+            display: none;
+            width: 18px;
+            height: 2px;
+            position: relative; 
+            top: 0px;
+            background-color: rgba(#000 ,1);
+
+            .xp-label {
+                width: 18px;
+                background-color: rgba(#090 ,1);
+            }
+        }
+    }
+}
