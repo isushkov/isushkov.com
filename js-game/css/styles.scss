@@ -1,0 +1,26 @@
+body {
+    background-color: #222;
+    color: #999;
+    font-family: Terminal Dosis;
+    // no select
+    // firefox & safari
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+a {
+    color: #69e2b3;
+}
+.battlefield-head {
+    border: 1px solid #000;
+    background: #111;
+    width: 700px;
+    height: 20px;
+}
+.body-up {
+    display: flex;
+    flex-direction: row;
+}
+@import "batlfield";
+@import "log-info";
+@import "info";
