@@ -4,12 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Сosplay FFantasy Versus XIII</title>
-    <meta name="Сosplay FFantasy Versus XIII"
-          content="Сosplay FFantasy Versus XIII. Ilya Sushkov. 3D Artist, portfolio">
-    <meta name="keywords"
-          content="cosplay, Final Fantasy, Versus XIII, Prompto Argentum, Shotgun Guy, FFantasy Versus XIII, work, Ilya, Sushkov, 3D Artist, portfolio">
-    <meta name="author" content="Ilya Sushkov">
+    <title>Simple JS-game</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/project.css">
     <link rel="shortcut icon" href="icon/favicon.png" type="image/png">
@@ -44,12 +39,12 @@
                 <div class="galleryLeft">
                     <a href="venomSnake.html">
                         <div class="galleryLinkLeft">
-                            <h1 class="indexLeft"><</h1>
+                            <h1 class="indexLeft"></h1>
                         </div>
                     </a>
                 </div>
                 <div class="projectBlock">
-                    <h2 class="projectName">Сosplay FFantasy Versus XIII</h2>
+                    <h2 class="projectName">Simple JS-game</h2>
                     <div class="wrap">
                         <input type="radio" name="slides" id="point1" checked>
                         <input type="radio" name="slides" id="point2">
