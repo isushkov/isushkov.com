@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Simple JS-game</title>
-    <link rel='stylesheet' href='css/js-game.css'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='shortcut icon' href='js-game/img/house.png' type='image/png'>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/project.css">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-101911065-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <title>Simple JS-Game</title>
+    <link rel='stylesheet' href='css/js-game.css'>
 </head>
 <body>
 <div class="wrapper">
@@ -33,19 +54,19 @@
         </header>
         <div class="projectContent">
             <div class="gallery">
-                <p class="project-name">SIMPLE JS-GAME</p>
+                <p class="project-name">Simple JS-Game</p>
                 <img class="js-img" src="img/js-game.jpg" alt="js-game image">
             </div>
             <div class="descriptionBlock">
                 <div class="descriptionBlockItem2">
-                    <h1 class="descriptionBlockName">ОПИСАНИЕ</h1>
+                    <h1 class="descriptionBlockName">Описание</h1>
                     <p class="description">
                         Примитивная стратегия.<br>Цель проекта: 
                         <span class='emphasis'>демонстрация базовых знаний JavaScript</span>
                         без использования MVC, JQuery, фреймворков и тп. Игра не требует установки.
                     </p>
                     <div class='js-notice'>
-                        <h1 class="js-notice-title">ВНИМАНИЕ</h1>
+                        <h1 class="js-notice-title">Внимание</h1>
                         <p class="js-notice-description">
                             Отсутсвует адаптивная верстка.
                             Игра нормально функционирует <span class='js-notice-emphasis'>только на компьютере</span>,
