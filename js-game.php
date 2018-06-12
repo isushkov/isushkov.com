@@ -55,7 +55,9 @@
         <div class="projectContent">
             <div class="gallery">
                 <p class="project-name">Simple JS-Game</p>
-                <img class="js-img" src="img/js-game.jpg" alt="js-game image">
+                <a href="img/js-game.jpg">
+                    <img class="js-img" src="img/js-game.jpg" alt="js-game image">
+                </a>
             </div>
             <div class="descriptionBlock">
                 <div class="descriptionBlockItem2">
@@ -79,6 +81,8 @@
             <div class='wrapper-js-play'>
                 <a class='js-play' href='./js-game/index.php'>PLAY GAME</a>
             </div>
+            <div class="empty"></div>
+            <div class="empty"></div>
         </div>
     </div>
     <div class="footer">
