@@ -2,7 +2,7 @@
     color: #b80;
 }
 .js-notice {
-    margin: 2% 0 2% 0;
+    margin: 12px 0 0 0;
     display: flex;
     display: -webkit-box;
     display: -webkit-flex;
@@ -21,13 +21,13 @@
 .js-notice-title {
     margin-top: 0.2em;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: 400;
     color: #8c939b;
 }
 .js-notice-description {
     color: #5b6269;
-    font-size: 1.3em;
+    font-size: 1.1em;
     margin: 0;
 }
 .js-notice-emphasis {
@@ -195,8 +195,8 @@ header p, h2 {
 }
 .linkHeader {
     font-size: 1.5em;
-    /* font-weight: 400; */
-    /* font-family: sans-serif; */
+    font-weight: 400;
+    font-family: sans-serif;
 }
 a {
     color: brown;
@@ -335,7 +335,7 @@ body {
 .project-name {
     color: #646b72;
     margin: 1rem 0 0 0;
-    font-size: 1.8em;
+    font-size: 1.5em;
 }
 .js-img {
     margin: 0.5rem 0 1.2rem 0;
@@ -476,9 +476,10 @@ body {
 }
 .descriptionBlockName {
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: 400;
     color: #8c939b;
+    font-family: sans-serif;
 }
 .descriptionBlockItem2 {
     margin: 3%;
@@ -495,7 +496,7 @@ body {
 }
 .description {
     color: #5b6269;
-    font-size: 1.3em;
+    font-size: 1.1em;
     margin: 0;
 }
 @media (min-width: 600px) and (max-width: 1024px) {
