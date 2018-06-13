@@ -87,7 +87,7 @@
     </div>
     <div class="footer">
         <div class="footerCenter">
-            <p class="update">Last update: 11-06-2018</p>
+            <p class="update">Last update: 13-06-2018</p>
         </div>
     </div>
 </div>
