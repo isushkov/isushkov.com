@@ -575,7 +575,7 @@ function addNewTurnLog(houseQty, goldInt) {
     delLastLog();
     var newTurnLog = document.createElement('div');
     newTurnLog.className = 'log-newturn';
-    newTurnLog.innerHTML = 'NEW TURN.' +
+    newTurnLog.innerHTML = 'New TURN.' +
         '<b class="empty">..</b>'+
         '<b class="gray">Houses:<b class="empty">..</b><b class="houses-int">'+
         +(houseQty)+'</b><b class="empty">..</b>'+
