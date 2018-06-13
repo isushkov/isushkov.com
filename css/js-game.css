@@ -25,6 +25,11 @@
     font-weight: 400;
     color: #8c939b;
 }
+@media (max-width: 600px) {
+    .js-notice-title {
+        font-size: 1.1em;
+    }
+}
 .js-notice-description {
     color: #5b6269;
     font-size: 1.1em;
@@ -63,7 +68,7 @@
     border: 1px solid #000;
     background-color: #a70;
     color: #000;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 /* == main.css ======== */
@@ -337,23 +342,26 @@ body {
     margin: 1rem 0 0 0;
     font-size: 1.5em;
 }
+.a-js-img {
+    text-align: center;
+}
 .js-img {
     margin: 0.5rem 0 1.2rem 0;
-    height: 380px;
+    width: 700px;
 }
 @media (min-width: 600px) and (max-width: 1150px) {
     .js-img {
-        height: 300px;
+        width: 70%;
     }
 }
 @media (max-width: 600px) {
     .js-img {
-        height: 200px;
+        width: 80%;
     }
 }
 @media (max-width: 350px) {
     .js-img {
-        height: 100px;
+        width: 80%;
     }
 }
 .wrap {

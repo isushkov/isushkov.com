@@ -55,7 +55,7 @@
         <div class="projectContent">
             <div class="gallery">
                 <p class="project-name">Simple JS-Game</p>
-                <a href="img/js-game.jpg">
+                <a class="a-js-img" href="img/js-game.jpg">
                     <img class="js-img" src="img/js-game.jpg" alt="js-game image">
                 </a>
             </div>
@@ -70,7 +70,7 @@
                     <div class='js-notice'>
                         <h1 class="js-notice-title">Внимание</h1>
                         <p class="js-notice-description">
-                            Отсутсвует адаптивная верстка.
+                            Отсутствует адаптивная верстка.
                             Игра нормально функционирует <span class='js-notice-emphasis'>только на компьютере</span>,
                             с разрешением экрана <span class='js-notice-emphasis'>не менее 1000 px</span>, иначе все посыпится :)
                         </p>
