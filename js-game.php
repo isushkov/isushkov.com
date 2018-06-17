@@ -63,9 +63,9 @@
                 <div class="descriptionBlockItem2">
                     <h1 class="descriptionBlockName">Описание</h1>
                     <p class="description">
-                        Примитивная стратегия.<br>Цель проекта: 
-                        <span class='emphasis'>демонстрация базовых знаний JavaScript</span>
-                        без использования MVC, JQuery, фреймворков и тп. Игра не требует установки.
+                        Примитивная стратегия.<br>
+                        <span class='emphasis'>Демонстрация базовых знаний JavaScript</span>
+                        без использования фреймворков. Игра не требует установки.
                     </p>
                     <div class='js-notice'>
                         <h1 class="js-notice-title">Внимание</h1>
