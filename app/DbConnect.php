@@ -20,4 +20,10 @@ class DbConnect
         echo '|connection closed|';
         $dbh = null;
     }
+    // public function getProducts($dbh) 
+    // {
+    //     foreach ($dbh->query('SELECT * from products') as $row) {
+    //         print_r($row);
+    //     }
+    // }
 }
