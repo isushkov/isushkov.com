@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include('./app/DatabaseConnect.php') ?>
 <html>
     <?php include('head.php') ?>
     <body>
