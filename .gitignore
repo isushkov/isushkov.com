@@ -1,3 +1,9 @@
 .gitconfig
-google752b6057afe8cb06.html
-js-game/css/.sass-cache
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
+rez/app/DbData.php
+rezerevData/app/DbData.php
+readme.md
