@@ -54,10 +54,26 @@
         </header>
         <div class="projectContent">
             <div class="gallery">
-                <p class="project-name">Simple JS-Game</p>
-                <a class="a-js-img" href="img/js-game.jpg">
-                    <img class="js-img" src="img/js-game.jpg" alt="js-game image">
-                </a>
+                <div class="galleryLeft">
+                    <a href="inception.html">
+                        <div class="galleryLinkLeft">
+                            <h1 class="indexLeft"><</h1>
+                        </div>
+                    </a>
+                </div>
+                <div class="content-gallery">
+                    <p class="project-name">Simple JS-Game</p>
+                    <a class="a-js-img" href="img/js-game.jpg">
+                        <img class="js-img" src="img/js-game.jpg" alt="js-game image">
+                    </a>
+                </div>
+                <div class="galleryRight">
+                    <a href="venomSnake.html">
+                        <div class="galleryLinkRight">
+                            <h1 class="indexRight">></h1>
+                        </div>
+                    </a>
+                </div>
             </div>
             <div class="descriptionBlock">
                 <div class="descriptionBlockItem2">
