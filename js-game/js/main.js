@@ -519,7 +519,7 @@ function addAtackEnemyLog(xpAtackedValue) {
     delLastLog();
     var atackLog = document.createElement('div');
     atackLog.className = 'log-atack-enemy';
-    atackLog.innerHTML = 'Враг был атакован:<b class="empty">..</b>'+
+    atackLog.innerHTML = 'The enemy was attacked:<b class="empty">..</b>'+
                          '<b class="change-xp">-30xp</b><b class="empty">..</b>'+
                          '<b class="gray">XP:</b><b class="empty">..</b>'+
                          '<b class="xp">'+xpAtackedValue+'</b>';
@@ -529,7 +529,7 @@ function addAtackUserLog(xpAtackedValue) {
     delLastLog();
     var atackLog = document.createElement('div');
     atackLog.className = 'log-atack-user';
-    atackLog.innerHTML = 'Ваш юнит атакован:<b class="empty">..</b>'+
+    atackLog.innerHTML = 'Your unit is attacked:<b class="empty">..</b>'+
                          '<b class="change-xp">-30xp</b><b class="empty">..</b>'+
                          '<b class="gray">XP:</b><b class="empty">..</b>'+
                          '<b class="xp">'+xpAtackedValue+'</b>';
@@ -539,14 +539,14 @@ function addDestroedEnemyLog() {
     delLastLog();
     var destroedLog = document.createElement('div');
     destroedLog.className = 'log-destroed-enemy';
-    destroedLog.innerHTML = 'Враг был yничтожен';
+    destroedLog.innerHTML = 'The enemy was destroyed';
     logItems.insertBefore(destroedLog, logItems.children[2]);
 }
 function addDestroedUserLog() {
     delLastLog();
     var destroedLog = document.createElement('div');
     destroedLog.className = 'log-destroed-user';
-    destroedLog.innerHTML = 'Ваш юнит был уничтожен';
+    destroedLog.innerHTML = 'Your unit has been destroyed';
     logItems.insertBefore(destroedLog, logItems.children[2]);
 }
 
@@ -561,21 +561,21 @@ function addNoGoldLog() {
     delLastLog();
     var noGoldLog = document.createElement('div');
     noGoldLog.className = 'log-nogold';
-    noGoldLog.innerHTML = 'У вас недостаточно золота';
+    noGoldLog.innerHTML = 'You do not have enough GOLD';
     logItems.insertBefore(noGoldLog, logItems.children[2]);
 }
 function addEndTurnLog() {
     delLastLog();
     var endTurnLog = document.createElement('div');
     endTurnLog.className = 'log-endturn';
-    endTurnLog.innerHTML = 'Вы походили всеми юнитами';
+    endTurnLog.innerHTML = 'All units have made a move';
     logItems.insertBefore(endTurnLog, logItems.children[2]);
 }
 function addNewTurnLog(houseQty, goldInt) {
     delLastLog();
     var newTurnLog = document.createElement('div');
     newTurnLog.className = 'log-newturn';
-    newTurnLog.innerHTML = 'Новый ход.' +
+    newTurnLog.innerHTML = 'New TURN.' +
         '<b class="empty">..</b>'+
         '<b class="gray">Houses:<b class="empty">..</b><b class="houses-int">'+
         +(houseQty)+'</b><b class="empty">..</b>'+
