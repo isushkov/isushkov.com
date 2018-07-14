@@ -46,6 +46,13 @@
                 </figcaption>
             </figure>
             <figure class="blockProject">
+                <img src="img/js-gameS.jpg" class="imgProject" alt="Js-Game">
+                <figcaption>
+                    <h2 class="nameProject">JS-Game</h2>
+                    <a href="js-game.php">View more</a>
+                </figcaption>
+            </figure>
+            <figure class="blockProject">
                 <img src="img/venomSnakeS.gif" class="imgProject" alt="Venom Snake">
                 <figcaption>
                     <h2 class="nameProject">Venom Snake</h2>
