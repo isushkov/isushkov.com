@@ -55,7 +55,7 @@
         <div class="projectContent">
             <div class="gallery">
                 <div class="galleryLeft">
-                    <a href="inception.html">
+                    <a href="english.php">
                         <div class="galleryLinkLeft">
                             <h1 class="indexLeft"><</h1>
                         </div>
@@ -95,7 +95,7 @@
                 <div class="empty"></div>
             </div>
             <div class='wrapper-js-play'>
-                <a class='js-play' href='./js-game/index.php'>PLAY GAME</a>
+                <a class='js-play' href='js-game/index.php'>PLAY GAME</a>
             </div>
             <div class="empty"></div>
             <div class="empty"></div>
