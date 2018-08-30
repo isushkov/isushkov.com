@@ -24,7 +24,7 @@
         ga('send', 'pageview');
 
     </script>
-    <title>Simple JS-Game</title>
+    <title>English language tests</title>
     <link rel='stylesheet' href='css/js-game.css'>
 </head>
 <body>
@@ -55,55 +55,37 @@
         <div class="projectContent">
             <div class="gallery">
                 <div class="galleryLeft">
-                    <a href="english.php">
+                    <a href="inception.html">
                         <div class="galleryLinkLeft">
                             <h1 class="indexLeft"><</h1>
                         </div>
                     </a>
                 </div>
                 <div class="content-gallery">
-                    <p class="project-name">Simple JS-Game</p>
-                    <a class="a-js-img" href="img/js-game.jpg">
-                        <img class="js-img" src="img/js-game.jpg" alt="js-game image">
-                    </a>
-                </div>
-                <div class="galleryRight">
-                    <a href="venomSnake.html">
-                        <div class="galleryLinkRight">
-                            <h1 class="indexRight">></h1>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="descriptionBlock">
-                <div class="descriptionBlockItem2">
-                    <h1 class="descriptionBlockName">Описание</h1>
-                    <p class="description">
-                        Примитивная стратегия.<br>
-                        <span class='emphasis'>Демонстрация базовых знаний JavaScript</span>
-                        без использования фреймворков. Игра не требует установки.
-                    </p>
-                    <div class='js-notice'>
-                        <h1 class="js-notice-title">Внимание</h1>
-                        <p class="js-notice-description">
-                            Отсутствует адаптивная верстка.
-                            Игра нормально функционирует <span class='js-notice-emphasis'>только на компьютере</span>,
-                            с разрешением экрана <span class='js-notice-emphasis'>не менее 1000 px</span>, иначе все посыпится :)
+                    <p class="project-name">Тесты на знание английской лексики</p>
+                    <div class="descriptionBlockEnglish">
+                        <h1 class="descriptionBlockName">Описание</h1>
+                        <p class="description">
+                            Сайт содержит набор тестов, у умным побором вопросов
                         </p>
+                        <div class='wrapper-js-play'>
+                            <a class='js-play' href='eng/index.php'>Учить английскую лексику</a>
+                        </div>
                     </div>
                 </div>
-                <div class="empty"></div>
+            <div class="galleryRight">
+                <a href="js-game.php">
+                    <div class="galleryLinkRight">
+                        <h1 class="indexRight">></h1>
+                    </div>
+                </a>
             </div>
-            <div class='wrapper-js-play'>
-                <a class='js-play' href='js-game/index.php'>PLAY GAME</a>
             </div>
-            <div class="empty"></div>
-            <div class="empty"></div>
         </div>
     </div>
     <div class="footer">
         <div class="footerCenter">
-            <p class="update">Last update: 13-06-2018</p>
+            <p class="update">Last update: 17-08-2018</p>
         </div>
     </div>
 </div>
