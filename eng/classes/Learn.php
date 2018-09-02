@@ -251,19 +251,19 @@ class Learn extends App
     {
         $dbh = $this->getConnection();
         // SS: success - errors > 5
-        $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and success - errors > 5");
+        $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and success - errors > 3");
         $sth->execute();
         $this->userStableSuccessCount = count($sth->fetchAll(PDO::FETCH_COLUMN));
         // S: 0 < success - errors <= 5 
-        $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and success - errors > 0 and success - errors <= 5");
+        $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and success - errors > 0 and success - errors <= 3");
         $sth->execute();
         $this->userSuccessCount = count($sth->fetchAll(PDO::FETCH_COLUMN));
         // E: 0 <= errors - success <= 5 
-        $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and errors - success >= 0 and errors - success <= 5");
+        $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and errors - success >= 0 and errors - success <= 3");
         $sth->execute();
         $this->userErrorsCount = count($sth->fetchAll(PDO::FETCH_COLUMN));
         // EE: errors - success > 5
-        $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and errors - success > 5");
+        $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and errors - success > 3");
         $sth->execute();
         $this->userStableErrorsCount = count($sth->fetchAll(PDO::FETCH_COLUMN));
     }
@@ -324,25 +324,25 @@ class Learn extends App
                 $this->currentQuestionType = 'He знаю';
                 $this->currentQuestionTypeClass = 'red2';
                 // EE: errors - success > 5
-                $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and errors - success > 5");
+                $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and errors - success > 3");
             }
             if ($status === 'errors') {
                 $this->currentQuestionType = 'Плохо знаю';
                 $this->currentQuestionTypeClass = 'red';
                 // E: 0 <= errors - success <= 5 
-                $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and errors - success >= 0 and errors - success <= 5");
+                $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and errors - success >= 0 and errors - success <= 3");
             }
             if ($status === 'success') {
                 $this->currentQuestionType = 'Знаю';
                 $this->currentQuestionTypeClass = 'yellow';
                 // S: 0 < success - errors <= 5 
-                $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and success - errors > 0 and success - errors <= 5");
+                $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and success - errors > 0 and success - errors <= 3");
             }
             if ($status === 'stableSuccess') {
                 $this->currentQuestionType = 'Хорошо знаю';
                 $this->currentQuestionTypeClass = 'green';
                 // SS: success - errors > 5
-                $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and success - errors > 5");
+                $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where user_id = $this->userId and success - errors > 3");
             }
             $sth->execute();
             $questionsIds = $sth->fetchAll(PDO::FETCH_COLUMN);
