@@ -5,9 +5,9 @@ class Learn extends App
     public $todayNeedCheck = 150;
     public $newWordsCount = 50;
     public $maxStableSuccessCount = 5000;
-    public $maxSuccessCount = 50;
-    public $maxErrorsCount = 30;
-    public $maxStableErrorsCount = 20;
+    public $maxSuccessCount = 100;
+    public $maxErrorsCount = 50;
+    public $maxStableErrorsCount = 30;
 
     public $typeVocabulary = null;
     public $vocabularyTable = null;
