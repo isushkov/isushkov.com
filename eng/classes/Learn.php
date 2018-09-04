@@ -62,8 +62,6 @@ class Learn extends App
 
     public function updateUserTodayCount()
     {
-        var_dump($this->userLastVisit);
-        var_dump($this->todayDate);
         // update last_visit and today_count
         if ($this->userLastVisit !== $this->todayDate) {
             // SET last_visit and today_count
