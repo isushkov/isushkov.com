@@ -17,9 +17,9 @@ class Learn extends App
     public $todayNeedCheckYellow = null;
     public $todayNeedCheckGreen = null;
 
-    public $userLogin = null;
-    public $userLastVisit = null;
-    public $userTodayCount = null;
+    // public $userLogin = null;
+    // public $userLastVisit = null;
+    // public $userTodayCount = null;
 
     public $allVocabulary = null;
     public $allVocabularyIds = null;
