@@ -76,8 +76,8 @@ class App
         $userData = $sth->fetchAll(PDO::FETCH_ASSOC);
 
         $this->userLogin = $userData[0]['login'];
-        $this->userLastVisit = substr($userData[0]['last_visit'], 0, 10); 
-        $this->userTodayCount = $userData[0]['today_count'];
+        // $this->userLastVisit = substr($userData[0]['last_visit'], 0, 10); 
+        $this->userTodayCount = (int)$userData[0]['today_count'];
         $this->typeVocabulary = $userData[0]['type_vocabulary'];
         $this->userTheme = $userData[0]['theme'];
 
