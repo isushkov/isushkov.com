@@ -9,88 +9,69 @@ class Learn extends App
     public $maxErrorsCount = 50;
     public $maxStableErrorsCount = 30;
 
-    public $typeVocabulary = null;
-    public $vocabularyTable = null;
-    public $progressTable = null;
+    // public $typeVocabulary = null;
+    // public $vocabularyTable = null;
+    // public $progressTable = null;
 
-    public $todayDate = null;
-    public $todayNeedCheckYellow = null;
-    public $todayNeedCheckGreen = null;
+    // public $todayDate = null;
+    // public $todayNeedCheckYellow = null;
+    // public $todayNeedCheckGreen = null;
 
     // public $userLogin = null;
     // public $userLastVisit = null;
     // public $userTodayCount = null;
 
-    public $allVocabulary = null;
-    public $allVocabularyIds = null;
-    public $allVocabularyCount = null;
-
-    public $userVocabulary = null;
-    public $userVocabularyIds = null;
-    public $userVocabularyCount = null;
+    // public $allVocabulary = null;
+    // public $allVocabularyIds = null;
+    // public $allVocabularyCount = null;
+    //
+    // public $userVocabulary = null;
+    // public $userVocabularyIds = null;
+    // public $userVocabularyCount = null;
 
     public $userReadyWords = 0;
     public $userStableSuccesSuccessCount = 0;
-    public $userStableSuccessCount = null;
-    public $userSuccessCount = null;
-    public $userErrorsCount = null;
-    public $userStableErrorsCount = null;
+    // public $userStableSuccessCount = null;
+    // public $userSuccessCount = null;
+    // public $userErrorsCount = null;
+    // public $userStableErrorsCount = null;
 
-    public $currentQuestionId = null;
-    public $currentQuestionEng = null;
-    public $currentQuestionRu = null;
-    public $currentQuestionType = null;
-    public $currentQuestionTypeClass = null;
-    public $currentQuestionVariants = null;
-    public $currentQuestionSummaryCount = null;
-    public $currentQuestionSuccessCount = null;
-    public $currentQuestionErrorsCount = null;
+    // public $currentQuestionId = null;
+    // public $currentQuestionEng = null;
+    // public $currentQuestionRu = null;
+    // public $currentQuestionType = null;
+    // public $currentQuestionTypeClass = null;
+    // public $currentQuestionVariants = null;
+    // public $currentQuestionSummaryCount = null;
+    // public $currentQuestionSuccessCount = null;
+    // public $currentQuestionErrorsCount = null;
 
-    public $questionResult = null;
-    public $lastQuestionEng = null;
-    public $lastQuestionRu = null;
-    public $lastQuestionUserAnswer = null;
+    // public $questionResult = null;
+    // public $lastQuestionEng = null;
+    // public $lastQuestionRu = null;
+    // public $lastQuestionUserAnswer = null;
 
     function __construct() 
     {
         $this->checkSession();
 
-        $this->todayDate = date("Y-m-d");
         $this->todayNeedCheckYellow = (int)($this->todayNeedCheck / 3) * 2;
         $this->todayNeedCheckGreen = (int)($this->todayNeedCheck / 3);
-    }
 
-    public function updateUserTodayCount()
-    {
-        // update last_visit and today_count
-        if ($this->userLastVisit !== $this->todayDate) {
-            // SET last_visit and today_count
-            $dbh = $this->getConnection();
-            $sth = $dbh->prepare("UPDATE users SET last_visit = :last_visit, today_count = :today_count WHERE id = :id");
-            $sth->execute(array(
-                'last_visit' => date('Y-m-d G:i:s'),
-                'id' => $this->userId,
-                'today_count' => $this->todayNeedCheck
-            ));
-            // get new userdata
-            $this->getUserData();
-        }
-        // check @int
-        if (!is_null($this->userTodayCount) || !is_int($this->userTodayCount)) {
-            $this->userTodayCount = (int)$this->userTodayCount;
-        }
-        if (!is_int($this->userTodayCount) || $this->userTodayCount < 0 || $this->userTodayCount > $this->todayNeedCheck) {
-            // set new today_count
-            $dbh = $this->getConnection();
-            $sth = $dbh->prepare("UPDATE users SET today_count = :today_count WHERE id = :id");
-            $sth->execute(array(
-                'today_count' => $this->todayNeedCheck,
-                'id' => $this->userId
-            ));
-            // get new userdata
-            $this->getUserData();
-        }
-        return $this;
+        $this->getTheme();
+
+        $this->getUserData();
+        $this->changeVocabulary();
+
+        $this->getUserData();
+        $this->getAllVocabulary();
+        $this->getUserVocabulary();
+        $this->getUserStatistic();
+        $this->generateQuestion();
+
+        $this->progressingPostData();
+        $this->getUserData();
+        $this->getUserStatistic();
     }
 
     public function getAllVocabulary()
