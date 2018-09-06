@@ -392,9 +392,6 @@ a {
         border-left: 0; 
         border-right: 0; 
 		&-red {
-			/* border: 1px solid #d18080; */
-			/* background-color: #f8cfcf; */
-			/* color: #c22424; */
             background-color: rgba(255, 0, 0,.1);
             border: 1px solid rgba(255, 0, 0,.2);
             color: rgba(164, 22, 22, 1);
@@ -592,4 +589,12 @@ a {
         border: 1px solid rgba(255, 0, 0,.3);
         color: rgba(164, 22, 22, 1);
     }
+}
+.page-not-found {
+    background-color: rgba(255, 0, 0,.1);
+    border: 1px solid rgba(255, 0, 0,.2);
+    color: rgba(164, 22, 22, 1);
+    border-top: 0; 
+    border-left: 0; 
+    border-right: 0; 
 }

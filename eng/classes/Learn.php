@@ -165,6 +165,7 @@ class Learn extends App
             $sth = $dbh->prepare("select * from $this->vocabularyTable where id = $lastQuestionId");
             $sth->execute();
             $lastQuestion = $sth->fetchAll(PDO::FETCH_ASSOC);
+            $this->lastQuestionId = $lastQuestion[0]['vocabulary_id'];
             $this->lastQuestionEng = $lastQuestion[0]['eng'];
             $this->lastQuestionRu = $lastQuestion[0]['ru'];
             $this->lastQuestionUserAnswer = $_POST['answer'];
@@ -253,6 +254,8 @@ class Learn extends App
     {
         if ($this->userVocabularyCount < $this->newWordsCount) {
             $this->getQuestion('new');
+        } else if ($this->userTodayCount >= 140) {
+            $this->getQuestion('new');
         } else {
             if ($this->userVocabularyCount < $this->allVocabularyCount) {
                 if ($this->userStableErrorsCount > $this->maxStableErrorsCount) {
@@ -298,6 +301,12 @@ class Learn extends App
             $newVocabularyIds = array_diff($this->allVocabularyIds, $this->userVocabularyIds);
             shuffle($newVocabularyIds);
             $questionId = array_shift($newVocabularyIds);
+            // no repit Q
+            if (isset($this->lastQuestionId)) {
+                while ($this->lastQuestionId == $questionId) {
+                    $questionId = array_shift($newVocabularyIds);
+                }
+            }
             $dbh = $this->getConnection();
             $sth = $dbh->prepare("select * from $this->vocabularyTable where id = $questionId");
         } else {
@@ -331,6 +340,12 @@ class Learn extends App
             // get question
             shuffle($questionsIds);
             $questionId = array_shift($questionsIds);
+            // no repit Q
+            if (isset($this->lastQuestionId)) {
+                while ($this->lastQuestionId == $questionId) {
+                    $questionId = array_shift($questionsIds);
+                }
+            }
             $sth = $dbh->prepare("select * from $this->vocabularyTable where id = $questionId");
         }
         $sth->execute();
@@ -354,4 +369,3 @@ class Learn extends App
         return $this;
     }
 }
-
