@@ -22,9 +22,9 @@ class DeleteProfile extends App
                 $dbh = $this->getConnection();
                 $sth = $dbh->prepare("delete from users where id = '".$this->userId."'");
                 $sth->execute();
-                $sth = $dbh->prepare("delete from progress where id = '".$this->userId."'");
+                $sth = $dbh->prepare("delete from progress where user_id = '".$this->userId."'");
                 $sth->execute();
-                $sth = $dbh->prepare("delete from progress850 where id = '".$this->userId."'");
+                $sth = $dbh->prepare("delete from progress850 where user_id = '".$this->userId."'");
                 $sth->execute();
                 //add message
                 $_SESSION['delete_user'] = 1;

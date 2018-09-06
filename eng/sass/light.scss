@@ -551,7 +551,7 @@ a {
             border-radius: 3px;
 			&-title {
                 border-radius: 3px 3px 0 0;
-                background-color: #cfeaf8;
+                // background-color: #cfeaf8;
                 color: #323232;
 			}
             &-learn {
@@ -609,5 +609,15 @@ a {
                 border: 1px solid #a74e4e;
             }
         }
+    }
+}
+.refresh {
+    border-radius: 3px;
+    border: 1px solid #b48787;
+    background-color: #ffbebe;
+    color: #323232;
+    &:hover {
+        background-color: #ffabab;
+        border: 1px solid #a74e4e;
     }
 }

@@ -3,6 +3,7 @@ class Profile extends App
 {
     public $userId = null;
     public $newUser = false;
+    public $refreshMessage = false;
 
     public $smallAllVocabularyCount = null;
     public $smallUserVocabularyCount = null;
@@ -19,6 +20,7 @@ class Profile extends App
         $this->getUserData();
         $this->getTheme();
         $this->getNewUserMessage();
+        $this->getRefreshMessage();
 
         $this->getProfileStatistic();
         $this->changeTheme();
@@ -29,9 +31,20 @@ class Profile extends App
             if ($_SESSION['new_user'] === 1) {
                 $this->newUser = true;
             } else {
-                echo 'session_new_user status faled'; die;
+                echo 'session_new_user status faled';
             }
             unset($_SESSION['new_user']);
+        }
+    }
+    public function getRefreshMessage() {
+        if (isset($_SESSION['mess_refresh'])) {
+            if ($_SESSION['mess_refresh'] === 1) {
+                $this->refreshMessage = true;
+            } else {
+                echo 'session_mess_refresh status faled';
+            }
+            unset($_SESSION['mess_refresh']);
+            $this->getUserData();
         }
     }
 
