@@ -582,3 +582,14 @@ a {
         }
     }
 }
+.refresh {
+    border-radius: 3px;
+    background-color: rgba(255, 0, 0,.1);
+    border: 1px solid rgba(255, 0, 0,.2);
+    color: rgba(164, 22, 22, 1);
+    &:hover {
+        background-color: rgba(255, 0, 0,.15);
+        border: 1px solid rgba(255, 0, 0,.3);
+        color: rgba(164, 22, 22, 1);
+    }
+}

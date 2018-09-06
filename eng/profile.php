@@ -19,9 +19,14 @@ $pageTitle = 'Мой аккаунт';
             Добро пожаловать, <?php echo $render->userLogin ?>
         </div>
     <?php endif ?>
+    <?php if ($render->refreshMessage): ?>
+        <div class="profile-message">
+            Вы успешно сбросили данные
+        </div>
+    <?php endif ?>
     <div class="profile-wrapper">
         <div class="profile">
-            <div class="profile-login">Логин:<span class="profile-green"><?php echo $render->userLogin ?></span></div>
+            <div class="profile-login">Логин: <span class="profile-green"><?php echo $render->userLogin ?></span></div>
             <div class="profile-content">
                 <div class="profile-content-column">
                     <div class="profile-content-column-title">Словарь 1</div>
@@ -33,6 +38,9 @@ $pageTitle = 'Мой аккаунт';
                         <input type="hidden" name="change-vocabulary" value="850"/>
                         <button type="submit" class="input-green" value="Учить 850 слов">Учить 850 слов</button>
                     </form>
+                    <div class="refresh-wrapper">
+                        <a class="refresh" href="refresh-data850.php">Начать сначала</a>
+                    </div>
                 </div>
                 <div class="profile-content-column">
                     <div class="profile-content-column-title">Словарь 2</div>
@@ -44,6 +52,9 @@ $pageTitle = 'Мой аккаунт';
                         <input name="change-vocabulary" value="5000" type="hidden"/>
                         <button class="input-yellow" value="Учить 5000 слов" type="submit">Учить 5000 слов</button>
                     </form>
+                    <div class="refresh-wrapper">
+                        <a class="refresh" href="refresh-data5000.php">Начать сначала</a>
+                    </div>
                 </div>
             </div>
             <div class="profile-content2">
