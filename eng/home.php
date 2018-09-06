@@ -3,7 +3,7 @@ spl_autoload_register(function ($class) {
     include 'classes/' . $class . '.php';
 });
 session_start();
-$render = new App();
+$render = new Home();
 $pageTitle = 'Учить английскую лексику';
 ?>
 <head>
@@ -15,6 +15,11 @@ $pageTitle = 'Учить английскую лексику';
 <body>
     <div class="wrapper">
         <?php include('head.php'); ?>
+        <?php if ($render->pageNotFound): ?>
+            <div class="page-not-found">
+                Запрашиваемая Вами страница не найдена
+            </div>
+        <?php endif ?>
         <div class="index">
             <h1>Часто употребляемые английские слова</h1>
             <div class="content">
