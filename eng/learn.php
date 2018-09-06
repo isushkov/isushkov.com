@@ -5,21 +5,6 @@ spl_autoload_register(function ($class) {
 session_start();
 
 $render = new Learn();
-$render->getTheme();
-
-$render->getUserData();
-$render->updateUserTodayCount();
-
-$render->changeVocabulary();
-$render->getUserData();
-
-$render->getAllVocabulary();
-$render->getUserVocabulary();
-$render->getUserStatistic();
-$render->generateQuestion();
-
-$render->progressingPostData();
-$render->getUserStatistic();
 
 $render->allVocabulary = null;
 $render->allVocabularyIds = null;
