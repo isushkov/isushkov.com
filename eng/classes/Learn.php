@@ -238,6 +238,7 @@ class Learn extends App
 
     public function resetSSProgress()
     {
+        $this->lastSSQFailed = true;
         $dbh = $this->getConnection();
         // Неверно. old question
         $newSummary = 3;
