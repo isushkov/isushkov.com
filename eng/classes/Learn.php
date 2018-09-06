@@ -29,8 +29,6 @@ class Learn extends App
     // public $userVocabularyIds = null;
     // public $userVocabularyCount = null;
 
-    public $userReadyWords = 0;
-    public $userStableSuccesSuccessCount = 0;
     // public $userStableSuccessCount = null;
     // public $userSuccessCount = null;
     // public $userErrorsCount = null;
@@ -165,10 +163,15 @@ class Learn extends App
             $sth = $dbh->prepare("select * from $this->vocabularyTable where id = $lastQuestionId");
             $sth->execute();
             $lastQuestion = $sth->fetchAll(PDO::FETCH_ASSOC);
-            $this->lastQuestionId = $lastQuestion[0]['vocabulary_id'];
+            $this->lastQuestionId = $lastQuestion[0]['id'];
             $this->lastQuestionEng = $lastQuestion[0]['eng'];
             $this->lastQuestionRu = $lastQuestion[0]['ru'];
             $this->lastQuestionUserAnswer = $_POST['answer'];
+
+            //SSQ
+            if (isset($_POST['lq_ss']) && $_POST['lq_ss'] === 1) {
+                $lastQuestionStatus = 'SSQ';
+            }
             // try answer
             if ($_POST['answer'] == $this->lastQuestionRu) {
                 $this->questionResult = true;
@@ -184,7 +187,11 @@ class Learn extends App
                 $this->questionResult = false;
                 // old question
                 if ($this->currentQuestionSummaryCount > 0) { 
-                    $this->updateUserVocabulary(false, true);
+                    if ($lastQuestionStatus = 'SSQ') {
+                        $this->resetSSProgress();
+                    } else {
+                        $this->updateUserVocabulary(false, true);
+                    }
                 // new question
                 } else {
                     $this->updateUserVocabulary(false, false);
@@ -229,6 +236,27 @@ class Learn extends App
         }
     }
 
+    public function resetSSProgress()
+    {
+        $dbh = $this->getConnection();
+        // Неверно. old question
+        $newSummary = 3;
+        $newSuccess = 2;
+        $newErrors = 0;
+        $sth = $dbh->prepare("update $this->progressTable set summary = $newSummary, success = $newSuccess, errors = $newErrors where user_id = $this->userId and vocabulary_id = $this->currentQuestionId");
+        $sth->execute();
+        $this->getUserVocabulary();
+        // today_count--
+        if ($this->userTodayCount > 0) {
+            $this->userTodayCount--;
+            $sth = $dbh->prepare("UPDATE `users` SET today_count = :todaycount WHERE `id` = :id");
+            $sth->execute(array(
+                'id' => $this->userId,
+                'todaycount' => $this->userTodayCount
+            ));
+        }
+    }
+
     public function getUserStatistic()
     {
         $dbh = $this->getConnection();
@@ -254,8 +282,10 @@ class Learn extends App
     {
         if ($this->userVocabularyCount < $this->newWordsCount) {
             $this->getQuestion('new');
-        } else if ($this->userTodayCount >= 140) {
+        } else if ($this->userTodayCount >= 140 && $this->userVocabularyCount < $this->allVocabularyCount) {
             $this->getQuestion('new');
+        } else if ($this->userTodayCount <= 10 && $this->userVocabularyCount < $this->allVocabularyCount) {
+            $this->getQuestion('stableSuccess');
         } else {
             if ($this->userVocabularyCount < $this->allVocabularyCount) {
                 if ($this->userStableErrorsCount > $this->maxStableErrorsCount) {
@@ -280,7 +310,7 @@ class Learn extends App
                 // } else if ($this->userStableSuccessCount > 0) {
                 //     $this->getQuestion('stableSuccess');
                 } else {
-                    echo 'WIN!';
+                    // WIN
                     $this->getQuestion('stableSuccess');
                 }
             }

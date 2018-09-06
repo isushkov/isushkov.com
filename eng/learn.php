@@ -107,6 +107,9 @@ $pageTitle = 'Учить английскую лексику';
                 <div class="row-variant">
                     <?php foreach ($render->currentQuestionVariants as $variant): ?>
                         <input name="question-id" value="<?php echo $render->currentQuestionId ?>" type="hidden"/>
+                        <?php if ($render->currentQuestionType == 'Хорошо знаю'): ?>
+                            <input name="lq_ss" value="1" type="hidden"/>
+                        <?php endif ?>
                         <button class="variant" id="<?php echo $i ?>" name="answer"
                             value="<?php echo $render->currentQuestionVariants[$i] ?>" 
                             type="submit"><?php echo $render->currentQuestionVariants[$i] ?></button>
@@ -128,7 +131,6 @@ $pageTitle = 'Учить английскую лексику';
                     </div>
                     <div class="statistic-row">
                         <div class="statistic-row-item">Всего: <span><?php echo $render->allVocabularyCount ?></span></div>
-                        <div class="statistic-row-item">Выучил: <span class="statistic-green"><?php echo $render->userStableSuccesSuccessCount ?></span></div>
                         <div class="statistic-row-item">Известные: <span class="statistic-blue"><?php echo $render->userVocabularyCount ?></span></div>
                         <div class="statistic-row-item">Неизвестные: <span class="statistic-yellow"><?php echo $render->allVocabularyCount - $render->userVocabularyCount ?></span></div>
                     </div>
