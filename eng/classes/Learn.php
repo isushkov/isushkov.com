@@ -284,8 +284,12 @@ class Learn extends App
             $this->getQuestion('new');
         } else if ($this->userTodayCount >= 140 && $this->userVocabularyCount < $this->allVocabularyCount) {
             $this->getQuestion('new');
-        } else if ($this->userTodayCount <= 10 && $this->userVocabularyCount < $this->allVocabularyCount) {
+        } else if ($this->userTodayCount <= 10 &&
+            $this->userVocabularyCount < $this->allVocabularyCount &&
+            $this->userStableSuccessCount >= 50) {
+
             $this->getQuestion('stableSuccess');
+
         } else {
             if ($this->userVocabularyCount < $this->allVocabularyCount) {
                 if ($this->userStableErrorsCount > $this->maxStableErrorsCount) {
