@@ -19,7 +19,7 @@ $pageTitle = 'Сброс данных - словарь 2';
     <div class="login-wrapper">
         <div class="login">
             <div class="message-yellow">
-                Внимание! После сброса дынных восставновить их будет невозможно
+                После сброса данных восставновить их будет невозможно
             </div>
             <?php if (is_array($render->errors) && count($render->errors) > 0): ?>
                 <?php foreach($render->errors AS $error): ?>
