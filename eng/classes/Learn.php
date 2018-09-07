@@ -8,6 +8,7 @@ class Learn extends App
     public $maxSuccessCount = 100;
     public $maxErrorsCount = 50;
     public $maxStableErrorsCount = 30;
+    public $lastSSQFailed = false;
 
     // public $typeVocabulary = null;
     // public $vocabularyTable = null;
@@ -241,8 +242,8 @@ class Learn extends App
         $this->lastSSQFailed = true;
         $dbh = $this->getConnection();
         // Неверно. old question
-        $newSummary = 3;
-        $newSuccess = 2;
+        $newSummary = 1;
+        $newSuccess = 1;
         $newErrors = 0;
         $sth = $dbh->prepare("update $this->progressTable set summary = $newSummary, success = $newSuccess, errors = $newErrors where user_id = $this->userId and vocabulary_id = $this->currentQuestionId");
         $sth->execute();
