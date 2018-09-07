@@ -54,8 +54,8 @@ $pageTitle = 'Учить английскую лексику';
                             <div class="result-ok-green"><?php echo $render->lastQuestionRu ?></div>
                         </div>
                     <?php else: ?>
-                        <?php if ($this->lastSSQFailed): ?>
-                            <div class="today-red">Статус слова был понижен</div>
+                        <?php if ($render->lastSSQFailed): ?>
+                            <div class="today-red">Статус сброшен (A:1|S:1|E:0)</div>
                         <?php endif ?>
                         <div class="result-false">
                             <div class="result-false-item"><?php echo $render->lastQuestionEng ?></div>
