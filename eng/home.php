@@ -23,9 +23,11 @@ $pageTitle = 'Учить английскую лексику';
         <div class="index">
             <h1>Часто употребляемые английские слова</h1>
             <div class="content">
-                Cловарный запас англоговорящего человека:<br/>
-                850 слов - 70%<br/>
-                5000 слов - 90%
+                Cловарный запас англоговорящего человека:
+                <div class="index-item">
+                    <div class="index-green">850 слов - 70%</div>
+                    <div class="index-yellow">5000 слов - 90%</div>
+                </div>
                 <?php if (!$render->userLogin()): ?>
                     <br/>
                     Войдите в систему чтобы выучить их
