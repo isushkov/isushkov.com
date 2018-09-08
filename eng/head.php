@@ -4,12 +4,12 @@
             <?php if ($render->showBlock('home')): ?>
                 <a href="home.php" class="link-index">На главную</a>
             <?php endif ?>
-            <?php if ($render->userLogin() && $render->showBlock('profile')): ?>
+            <?php if ($render->isLogin() && $render->showBlock('profile')): ?>
                 <a href="profile.php" class="link-profile">Мой профиль</a>
             <?php endif ?>
         </div>
         <div class="head-content-right">
-            <?php if ($render->userLogin()): ?>
+            <?php if ($render->isLogin()): ?>
                 <a href="logout.php" class="link-exit">Выйти</a>
             <?php else: ?>
                 <?php if ($render->showBlock('login')): ?>
