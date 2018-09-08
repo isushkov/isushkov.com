@@ -16,7 +16,7 @@ class App
     {
         $request = $_SERVER['REQUEST_URI'];
         // processing from login
-        if (isset($_COOKIE['hash']) && isset($_SESSION['user_id'])) { 
+        if (isset($_COOKIE['hash']) && isset($_SESSION['user_id'])) {
             // check cookie
             $dbh = $this->getConnection();
             $sth = $dbh->prepare("select id, hash from users where hash = '".$_COOKIE['hash']."'");
@@ -111,7 +111,7 @@ class App
 
     public function isLogin()
     {
-        if (isset($this->userId)) { 
+        if (isset($this->userId)) {
             return true;
         }
         return false;

@@ -30,27 +30,22 @@ class Profile extends App
 
     public function getProgressCount($typeVoc, $status = null)
     {
-        $dbh = $this->getConnection();
-        // processing all_vocabulary
-        if ($status === null) {
-            if ($typeVoc == '850') {
-                $progressTable = 'progress850';
-            } else if ($typeVoc == '5000') {
-                $progressTable = 'progress';
-            }
-            $sth = $dbh->prepare("select count(*) from $progressTable where user_id = $this->userId");
-            $sth->execute();
-            return (int)$sth->fetch(PDO::FETCH_COLUMN);
-        }
         // processing type_vocabulary
         if ($typeVoc == '850') {
             $progressTable = 'progress850';
         } else if ($typeVoc == '5000') {
             $progressTable = 'progress';
         }
+        $dbh = $this->getConnection();
+        // processing all_vocabulary
+        if ($status === null) {
+            $sth = $dbh->prepare("select count(*) from $progressTable where user_id = $this->userId");
+            $sth->execute();
+            return (int)$sth->fetch(PDO::FETCH_COLUMN);
+        }
         // processing status
         if ($status == 'EE') {
-            $sth = $dbh->prepare("select count(*) from $progressTable where 
+            $sth = $dbh->prepare("select count(*) from $progressTable where
                 errors - success > 2 and
                 user_id = $this->userId");
         } else if ($status == 'E') {
@@ -60,7 +55,7 @@ class Profile extends App
                 user_id = $this->userId");
         } else if ($status == 'S') {
             $sth = $dbh->prepare("select count(*) from $progressTable where
-                success - errors = 0 and
+                success - errors > 0 and
                 success - errors <= 3 and
                 user_id = $this->userId");
         } else if ($status == 'SS') {

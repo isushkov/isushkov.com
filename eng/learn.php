@@ -102,13 +102,12 @@ $pageTitle = 'Учить английскую лексику';
                 </div>
             </div>
             <form class="form" method="post" action="learn.php">
+                <input name="question-id" value="<?php echo $render->questionId ?>" type="hidden"/>
                 <input name="lq_status" value="<?php $render->questionType ?>" type="hidden"/>
                 <?php $i = 0; $j = 1 ?>
                 <div class="row-variant">
                     <?php foreach ($render->variants as $variant): ?>
-                        <input name="question-id" value="<?php echo $render->questionId ?>" type="hidden"/>
-                        <button class="variant" id="<?php echo $i ?>" name="answer"
-                            value="<?php echo $render->variants[$i] ?>" 
+                        <button class="variant" name="answer" value="<?php echo $render->variants[$i] ?>"
                             type="submit"><?php echo $render->variants[$i] ?></button>
                         <?php if ($j % 2 == 0): ?>
                             </div>
