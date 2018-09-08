@@ -43,7 +43,3 @@ $pageTitle = 'Вход в систему';
         </form>
     </div>
 </body>
-<?php
-echo '<pre>';
-    var_dump($render);
-echo '</pre>';
