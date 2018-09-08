@@ -41,7 +41,3 @@ $pageTitle = 'Регистрация нового пользователя';
         </form>
     </div>
 </body>
-<?php
-echo '<pre>';
-    var_dump($render);
-echo '</pre>';

@@ -47,9 +47,4 @@ $pageTitle = 'Учить английскую лексику';
             <?php endif ?>
         </div>
     </div>
-</div>
 </body>
-<?php
-echo '<pre>';
-    var_dump($render);
-echo '</pre>';
