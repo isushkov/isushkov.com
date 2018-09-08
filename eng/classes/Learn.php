@@ -3,7 +3,7 @@ class Learn extends Profile
 {
     public $countFalseVariants = 3;
 
-    public $todayNeedCheck = 50;
+    public $todayNeedCheck = 150;
     public $minWords = 20;
     public $maxS = 10;
     public $maxE = 5;
@@ -13,11 +13,7 @@ class Learn extends Profile
     function __construct() 
     {
         $this->checkSession();
-        $this->progressingPostData();
-            $this->changeVocabulary();
 
-        $this->todayNeedCheckYellow = (int)($this->todayNeedCheck / 3) * 2;
-        $this->todayNeedCheckGreen = (int)($this->todayNeedCheck / 3);
         $this->todayCount = $this->getUserData('today_count');
         $this->typeVocabulary = $this->getUserData('type_vocabulary');
         if ($this->typeVocabulary == '850') {
@@ -27,6 +23,11 @@ class Learn extends Profile
             $this->vocabularyTable = 'vocabulary';
             $this->progressTable = 'progress';
         }
+
+        $this->progressingPostData();
+
+        $this->todayNeedCheckYellow = (int)($this->todayNeedCheck / 3) * 2;
+        $this->todayNeedCheckGreen = (int)($this->todayNeedCheck / 3);
         $this->progressCount = $this->getProgressCount($this->typeVocabulary);
         $this->vocabularyCount = $this->getVocabularyCount($this->typeVocabulary);
         $this->countSS = $this->getProgressCount($this->typeVocabulary, 'SS');
@@ -40,30 +41,47 @@ class Learn extends Profile
     public function progressingPostData()
     {
         if (isset($_POST['answer']) && isset($_POST['question-id'])) {
-            $lastQuestionId = $_POST['question-id'];
+            $this->lastQuestionId = $_POST['question-id'];
             // get last Question data
             $dbh = $this->getConnection();
-            $sth = $dbh->prepare("select * from $this->vocabularyTable where id = $lastQuestionId");
+            $sth = $dbh->prepare("select * from $this->vocabularyTable where id = $this->lastQuestionId");
             $sth->execute();
             $lastQuestion = $sth->fetch(PDO::FETCH_ASSOC);
-            $this->lastQuestionId = $lastQuestion['id'];
             $this->lastQuestionEng = $lastQuestion['eng'];
             $this->lastQuestionRu = $lastQuestion['ru'];
             $this->lastQuestionUserAnswer = $_POST['answer'];
+            // get lastQuestionStatistic
+            $this->lastQuestionStatus = $_POST['lq_status'];
+            if ($this->lastQuestionStatus == 'Новое слово') {
+                $this->lastQuestionA = 0;
+                $this->lastQuestionS = 0;
+                $this->lastQuestionE = 0;
+            } else {
+                $sth = $dbh->prepare("select summary, success, errors from $this->progressTable where
+                    user_id = $this->userId and
+                    vocabulary_id = $this->lastQuestionId");
+                $sth->execute();
+                $lastQuestionStatistic = $sth->fetch(PDO::FETCH_ASSOC);
+                $this->lastQuestionA = $lastQuestionStatistic['summary'];
+                $this->lastQuestionS = (int)$lastQuestionStatistic['success'];
+                $this->lastQuestionE = (int)$lastQuestionStatistic['errors'];
+            }
+
             // try answer
             if ($_POST['answer'] == $this->lastQuestionRu) {
                 $this->questionResult = true;
-                if ($this->questionA > 0) { 
+                if ($this->lastQuestionA > 0) { 
                     $this->updateUserVocabulary(true, true);
                 } else {
+                    $this->lastQuestionA = 0;
                     $this->updateUserVocabulary(true, false);
                 }
             // false answer
             } else {
                 $this->questionResult = false;
-                if ($this->questionA > 0) { 
+                if ($this->lastQuestionA > 0) { 
                     //SSQ
-                    if (isset($_POST['lq_ss'])) {
+                    if ($this->lastQuestionStatus == 'Хорошо знаю') {
                         $this->resetSSProgress();
                     } else {
                         $this->updateUserVocabulary(false, true);
@@ -73,28 +91,30 @@ class Learn extends Profile
                 }
             }
         }
+        $this->changeVocabulary();
     }
 
     public function updateUserVocabulary($success, $oldQuestion)
     {
-        $this->questionA++;
+        $this->lastQuestionA++;
         if ($success) {
-            $this->questionS++;
+            $this->lastQuestionS++;
         } else {
-            $this->questionE++;
+            $this->lastQuestionE++;
         }
         $dbh = $this->getConnection();
         if ($oldQuestion) {
             $sth = $dbh->prepare(
                 "update $this->progressTable set
-                summary = $questionA, success = $questionS, errors = $questionE where
-                user_id = $this->userId and vocabulary_id = $this->questionId"
+                summary = $this->lastQuestionA, success = $this->lastQuestionS, errors = $this->lastQuestionE where
+                user_id = $this->userId and vocabulary_id = $this->lastQuestionId"
             );
             $sth->execute();
         } else {
             $sth = $dbh->prepare(
                 "insert into $this->progressTable (user_id, vocabulary_id, summary, success, errors)
-                values ($this->userId, $this->questionId, $questionA, $questionS, $questionE)"
+                values ($this->userId, $this->lastQuestionId,
+                $this->lastQuestionA, $this->lastQuestionS, $this->lastQuestionE)"
             );
             $sth->execute();
         }
@@ -106,14 +126,14 @@ class Learn extends Profile
         $this->lastSSQFailed = true;
         $dbh = $this->getConnection();
         // Неверно. old question
-        $this->questionA = 1;
-        $this->questionS = 1;
-        $this->questionE = 0;
+        $this->lastQuestionA = 1;
+        $this->lastQuestionS = 1;
+        $this->lastQuestionE = 0;
 
         $sth = $dbh->prepare(
             "update $this->progressTable set
-            summary = $questionA, success = $questionS, errors = $questionE where
-            user_id = $this->userId and vocabulary_id = $this->questionId");
+            summary = $lastQuestionA, success = $lastQuestionS, errors = $lastQuestionE where
+            user_id = $this->userId and vocabulary_id = $this->lastQuestionId");
         $sth->execute();
         // today_count--
         $this->updateTodayCount();
@@ -121,6 +141,7 @@ class Learn extends Profile
 
     public function updateTodayCount()
     {
+        $dbh = $this->getConnection();
         if ($this->todayCount > 0) {
             $this->todayCount--;
             $sth = $dbh->prepare("UPDATE users SET today_count = $this->todayCount WHERE id = $this->userId");
@@ -131,25 +152,14 @@ class Learn extends Profile
     public function changeVocabulary()
     {
         if (isset($_POST['change-vocabulary'])) {
-            if ($_POST['change-vocabulary'] == '850' ||
-                $_POST['change-vocabulary'] == '5000') {
-
+            $postCV = $_POST['change-vocabulary'];
+            if ($postCV == '850' || $postCV == '5000') {
                 $dbh = $this->getConnection();
-                $sth = $dbh->prepare("UPDATE users SET type_vocabulary = :type_vocabulary WHERE id = :id");
-                $sth->execute(array(
-                    'id' => $this->userId,
-                    'type_vocabulary' => $_POST['change-vocabulary']
-                ));
-            } else {
-                echo 'uncorrect POST data'; die;
+                $sth = $dbh->prepare("UPDATE users SET type_vocabulary = $postCV WHERE id = $this->userId");
+                $sth->execute();
             }
         }
     }
-
-    // ==========================
-    // ==========================
-    // ==========================
-    // ==========================
     
     public function getUserData($field = null)
     {
@@ -181,7 +191,7 @@ class Learn extends Profile
             if ($progressCount < $this->minWords) {
                 $this->getQuestion('new');
             // if first today visits
-            } else if ($todayCount >= ($this->todayNeedCheck - 10)) {
+            } else if ($todayCount >= ($this->odayNeedCheck - 10)) {
                 $this->getQuestion('new');
             // if last today visits
             } else if ($todayCount > 0 && $todayCount <= 10 && $SScount >= 50) {
@@ -199,7 +209,10 @@ class Learn extends Profile
             }
         } else {
             // if first today visits
-            if ($todayCount <= 140 && $todayCount >= 120 && $countSS > 0) {
+            if ($todayCount <= ($this->odayNeedCheck - 10)
+                && $todayCount >= ($this->odayNeedCheck - 30)
+                && $countSS > 0)
+            {
                 $this->getQuestion('SS');
             // processing errors
             } else if ($countEE > 0) {
@@ -218,6 +231,7 @@ class Learn extends Profile
     // @param $status = (str) new || errors || stableErrors || success || stableSuccess
     public function getQuestion($status)
     {
+        $dbh = $this->getConnection();
         if ($status === 'new') {
             $this->questionType = 'Hовое слово';
             $this->questionTypeClass = 'dark';
@@ -227,7 +241,6 @@ class Learn extends Profile
             $questionIds = array_diff($vocabularyIds, $progressIds);
         } else {
             // processing status
-            $dbh = $this->getConnection();
             if ($status === 'EE') {
                 $this->questionType = 'He знаю';
                 $this->questionTypeClass = 'red2';
@@ -328,14 +341,15 @@ class Learn extends Profile
         $variants[0] = $question['ru'];
         // get false variants
         $vocabularyDataRu = $this->getVocabularyData('ru');
-        $falseVariantsRu = array_rand($vocabularyDataRu, $this->countFalseVariants);
+        // var_dump($vocabularyDataRu); die;
+        $falseVariantsIds = array_rand($vocabularyDataRu, $this->countFalseVariants);
         $i = 1;
-        foreach ($falseVariantsRu as $falseVariantRu) {
+        foreach ($falseVariantsIds as $falseVariantId) {
             // if falseVariant = questionRu
-            while ($falseVariantRu == $question['ru']) {
-                $falseVariantRu = array_rand($vocabularyDataRu, 1);
+            while ($falseVariantId == $question['id']) {
+                $falseVariantId = array_rand($vocabularyDataRu, 1);
             }
-            $variants[$i] = $falseVariantRu;
+            $variants[$i] = $vocabularyDataRu[$falseVariantId];
             $i++;
         }
         $i = null;
