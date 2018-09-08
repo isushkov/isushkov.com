@@ -3,9 +3,7 @@ spl_autoload_register(function ($class) {
     include 'classes/' . $class . '.php';
 });
 session_start();
-
 $render = new Learn();
-
 $render->allVocabulary = null;
 $render->allVocabularyIds = null;
 $render->userVocabulary = null;
@@ -54,9 +52,6 @@ $pageTitle = 'Учить английскую лексику';
                             <div class="result-ok-green"><?php echo $render->lastQuestionRu ?></div>
                         </div>
                     <?php else: ?>
-                        <?php if ($render->lastSSQFailed): ?>
-                            <div class="today-red">Статус сброшен (A:1|S:1|E:0)</div>
-                        <?php endif ?>
                         <div class="result-false">
                             <div class="result-false-item"><?php echo $render->lastQuestionEng ?></div>
                             <div class="result-false-row">
@@ -64,6 +59,9 @@ $pageTitle = 'Учить английскую лексику';
                                 <div class="result-false-row-green"><?php echo $render->lastQuestionRu ?></div>
                             </div>
                         </div>
+                        <?php if ($render->lastSSQFailed): ?>
+                            <div class="today-red">Прогресс сброшен (S:1|E:0)</div>
+                        <?php endif ?>
                     <?php endif ?>
                 <?php endif ?>
             </div>
