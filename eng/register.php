@@ -4,19 +4,13 @@ spl_autoload_register(function ($class) {
 });
 session_start();
 $render = new Register();
-$render->summary();
 $pageTitle = 'Регистрация нового пользователя';
 ?>
-<head>
-    <title><?php echo $pageTitle ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <?php echo $render->userThemeRender ?>
-</head>
+<?php include('header.php'); ?>
 <body>
     <?php include('head.php'); ?>
     <div class="login">
-        <?php if (is_array($render->errors) && count($render->errors) > 0): ?>
+        <?php if (isset($render->errors) && count($render->errors) > 0): ?>
             <?php foreach($render->errors AS $error): ?>
                 <div class="message-red">
                     <?php echo $error ?>
@@ -47,3 +41,7 @@ $pageTitle = 'Регистрация нового пользователя';
         </form>
     </div>
 </body>
+<?php
+echo '<pre>';
+    var_dump($render);
+echo '</pre>';

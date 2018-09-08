@@ -152,6 +152,6 @@ $pageTitle = 'Учить английскую лексику';
     </div>
 </body>
 <?php
-// echo '<pre>';
-//     print_r($render);
-// echo '</pre>';
+echo '<pre>';
+    print_r($render);
+echo '</pre>';
