@@ -6,12 +6,7 @@ session_start();
 $render = new Profile();
 $pageTitle = 'Мой аккаунт';
 ?>
-<head>
-    <title><?php echo $pageTitle ?></title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php echo $render->userThemeRender ?>
-</head>
+<?php include('header.php'); ?>
 <body>
     <?php include('head.php'); ?>
     <?php if ($render->newUser): ?>
@@ -52,9 +47,10 @@ $pageTitle = 'Мой аккаунт';
                         <input type="hidden" name="change-vocabulary" value="850"/>
                         <button type="submit" class="input-green" value="Учить 850 слов">Учить 850 слов</button>
                     </form>
-                    <div class="refresh-wrapper">
-                        <a class="refresh" href="refresh-data850.php">Начать сначала</a>
-                    </div>
+                    <form class="refresh-wrapper" method="get" action="refresh-data.php">
+                        <input type="hidden" name="vocabulary" value="850"/>
+                        <button type="submit" class="refresh" value="refresh">Haчать сначала</button>
+                    </form>
                 </div>
                 <div class="profile-content-column">
                     <div class="profile-content-column-title">Словарь 2</div>
@@ -80,9 +76,10 @@ $pageTitle = 'Мой аккаунт';
                         <input name="change-vocabulary" value="5000" type="hidden"/>
                         <button class="input-yellow" value="Учить 5000 слов" type="submit">Учить 5000 слов</button>
                     </form>
-                    <div class="refresh-wrapper">
-                        <a class="refresh" href="refresh-data5000.php">Начать сначала</a>
-                    </div>
+                    <form class="refresh-wrapper" method="get" action="refresh-data.php">
+                        <input type="hidden" name="vocabulary" value="5000"/>
+                        <button type="submit" class="refresh" value="refresh">Haчать сначала</button>
+                    </form>
                 </div>
             </div>
             <div class="profile-content2">
@@ -95,3 +92,7 @@ $pageTitle = 'Мой аккаунт';
         </div>
     </div>
 </body>
+<?php
+echo '<pre>';
+    var_dump($render);
+echo '</pre>';

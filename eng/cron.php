@@ -1,13 +1,12 @@
 <?php
 // check php-cli
 if (PHP_SAPI != 'cli'){
-    // die('Не консоль');
     session_start();
     $_SESSION['page_not_found'] = 1;
     header("Location: home.php");
     exit();
 } else {
-    // update today_count
+    // cron update today_count
     include('dbData.php');
     try {
         $dbh = new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8', $user, $pass);

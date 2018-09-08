@@ -6,12 +6,7 @@ session_start();
 $render = new Home();
 $pageTitle = 'Учить английскую лексику';
 ?>
-<head>
-    <title><?php echo $pageTitle ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <?php echo $render->userThemeRender ?>
-</head>
+<?php include('header.php'); ?>
 <body>
     <div class="wrapper">
         <?php include('head.php'); ?>
@@ -28,12 +23,12 @@ $pageTitle = 'Учить английскую лексику';
                     <div class="index-green">850 слов - 70%</div>
                     <div class="index-yellow">5000 слов - 90%</div>
                 </div>
-                <?php if (!$render->userLogin()): ?>
+                <?php if (!$render->isLogin()): ?>
                     <br/>
                     Войдите в систему чтобы выучить их
                 <?php endif ?>
             </div>
-            <?php if ($render->userLogin()): ?>
+            <?php if ($render->isLogin()): ?>
                 <div class="content">
                     <form method="post" action="<?php echo 'learn.php' ?>">
                         <input name="change-vocabulary" value="850" type="hidden" />
@@ -54,3 +49,7 @@ $pageTitle = 'Учить английскую лексику';
     </div>
 </div>
 </body>
+<?php
+echo '<pre>';
+    var_dump($render);
+echo '</pre>';
