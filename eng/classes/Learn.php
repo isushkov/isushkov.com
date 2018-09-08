@@ -1,97 +1,73 @@
 <?php
 class Learn extends App
 {
-    public $countFalseVariants = 9;
-    public $todayNeedCheck = 150;
-    public $newWordsCount = 50;
-    public $maxStableSuccessCount = 5000;
-    public $maxSuccessCount = 100;
-    public $maxErrorsCount = 50;
-    public $maxStableErrorsCount = 30;
+    public $countFalseVariants = 3;
+    public $todayNeedCheck = 50;
+    public $newWordsCount = 20;
+    public $maxSuccessCount = 10;
+    public $maxErrorsCount = 5;
+    public $maxStableErrorsCount = 5;
     public $lastSSQFailed = false;
-
-    // public $typeVocabulary = null;
-    // public $vocabularyTable = null;
-    // public $progressTable = null;
-
-    // public $todayDate = null;
-    // public $todayNeedCheckYellow = null;
-    // public $todayNeedCheckGreen = null;
-
-    // public $userLogin = null;
-    // public $userLastVisit = null;
-    // public $userTodayCount = null;
-
-    // public $allVocabulary = null;
-    // public $allVocabularyIds = null;
-    // public $allVocabularyCount = null;
-    //
-    // public $userVocabulary = null;
-    // public $userVocabularyIds = null;
-    // public $userVocabularyCount = null;
-
-    // public $userStableSuccessCount = null;
-    // public $userSuccessCount = null;
-    // public $userErrorsCount = null;
-    // public $userStableErrorsCount = null;
-
-    // public $currentQuestionId = null;
-    // public $currentQuestionEng = null;
-    // public $currentQuestionRu = null;
-    // public $currentQuestionType = null;
-    // public $currentQuestionTypeClass = null;
-    // public $currentQuestionVariants = null;
-    // public $currentQuestionSummaryCount = null;
-    // public $currentQuestionSuccessCount = null;
-    // public $currentQuestionErrorsCount = null;
-
-    // public $questionResult = null;
-    // public $lastQuestionEng = null;
-    // public $lastQuestionRu = null;
-    // public $lastQuestionUserAnswer = null;
 
     function __construct() 
     {
-        $this->checkSession();
+        $this->getTheme();
+
+        $this->changeVocabulary();
+        $this->getAllVocabularyIds();
+        $this->getUserVocabulary();
+
+        $this->getUserData();
+        $this->getUserStatistic();
+        $this->progressingPostData();
+        $this->generateQuestion();
 
         $this->todayNeedCheckYellow = (int)($this->todayNeedCheck / 3) * 2;
         $this->todayNeedCheckGreen = (int)($this->todayNeedCheck / 3);
-
-        $this->getTheme();
-
-        $this->getUserData();
-        $this->changeVocabulary();
-
-        $this->getUserData();
-        $this->getAllVocabulary();
-        $this->getUserVocabulary();
-        $this->getUserStatistic();
-        $this->generateQuestion();
-
-        $this->progressingPostData();
-        $this->getUserData();
-        $this->getUserStatistic();
     }
 
-    public function getAllVocabulary()
+    public function getUserData()
     {
         $dbh = $this->getConnection();
-        $sth = $dbh->prepare("select * from $this->vocabularyTable");
+        $sth = $dbh->prepare("select * from users where id = $this->userId");
+        $sth->execute();
+        $userData = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+        $this->userLogin = $userData[0]['login'];
+        // $this->userLastVisit = substr($userData[0]['last_visit'], 0, 10); 
+        $this->userTodayCount = (int)$userData[0]['today_count'];
+        $this->typeVocabulary = $userData[0]['type_vocabulary'];
+        $this->userTheme = $userData[0]['theme'];
+
+        if ($this->typeVocabulary == '850') {
+            $this->vocabularyTable = 'vocabulary850';
+            $this->progressTable = 'progress850';
+        } else if ($this->typeVocabulary == '5000') {
+            $this->vocabularyTable = 'vocabulary';
+            $this->progressTable = 'progress';
+        } else {
+            echo 'Uncorrect type vocabulary'; die;
+        }
+        return $this;
+    }
+
+
+    public function getAllVocabularyIds()
+    {
+        $dbh = $this->getConnection();
+        $sth = $dbh->prepare("select id from $this->vocabularyTable");
         $sth->execute();
 
-        $this->allVocabulary = $sth->fetchAll(PDO::FETCH_ASSOC);
-        $this->allVocabularyCount = count($this->allVocabulary);
+        $this->allVocabularyIds = $sth->fetchAll(PDO::FETCH_COLUMN);
+    }
 
-        $allVocabularyIds = array();
-        $i = 0;
-        foreach ($this->allVocabulary as $vocabulary) {
-            $allVocabularyIds[$i] = $vocabulary['id'];  
-            $i++;
-        }
-        unset($i);
-        $this->allVocabularyIds = $allVocabularyIds;
+    public function getAllVocabularyCount()
+    {
+        $dbh = $this->getConnection();
+        $sth = $dbh->prepare("select count(*) from $this->vocabularyTable");
+        $sth->execute();
 
-        return $this;
+        $this->allVocabularyCount = (int)$sth->fetch(PDO::FETCH_COLUMN);
     }
     
     public function getUserVocabulary()
@@ -282,48 +258,50 @@ class Learn extends App
 
     public function generateQuestion()
     {
-        if ($this->userVocabularyCount < $this->newWordsCount) {
-            $this->getQuestion('new');
-        } else if ($this->userTodayCount >= 140 && $this->userVocabularyCount < $this->allVocabularyCount) {
-            $this->getQuestion('new');
-        } else if ($this->userTodayCount <= 10 && $this->userTodayCount > 0 &&
-            $this->userVocabularyCount < $this->allVocabularyCount &&
-            $this->userStableSuccessCount >= 50) {
-
-            $this->getQuestion('stableSuccess');
-
-        } else {
-            if ($this->userVocabularyCount < $this->allVocabularyCount) {
-                if ($this->userStableErrorsCount > $this->maxStableErrorsCount) {
-                    $this->getQuestion('stableErrors');
-                } else if ($this->userErrorsCount > $this->maxErrorsCount) {
-                    $this->getQuestion('errors');
-                } else if ($this->userSuccessCount > $this->maxSuccessCount) {
-                    $this->getQuestion('success');
-                // no repit SSQ
-                } else if ($this->userStableSuccessCount > $this->maxStableSuccessCount) {
+        // for padavan
+        if ($this->userVocabularyCount < $this->allVocabularyCount) {
+            // get started quantity
+            if ($this->userVocabularyCount < $this->newWordsCount) {
+                $this->getQuestion('new');
+            // if first today visit
+            } else if ($this->userTodayCount >= 140) {
+                $this->getQuestion('new');
+            // if last today visit
+            } else if ($this->userTodayCount <= 10 && $this->userTodayCount > 0 &&
+                $this->userStableSuccessCount >= 50) {
                     $this->getQuestion('stableSuccess');
-                } else {
-                    $this->getQuestion('new');
-                }
+            // processing errors
+            } else if ($this->userStableErrorsCount > $this->maxStableErrorsCount) {
+                $this->getQuestion('stableErrors');
+            } else if ($this->userErrorsCount > $this->maxErrorsCount) {
+                $this->getQuestion('errors');
+            } else if ($this->userSuccessCount > $this->maxSuccessCount) {
+                $this->getQuestion('success');
+            // next
             } else {
-                if ($this->userStableErrorsCount > 0) {
-                    $this->getQuestion('stableErrors');
-                } else if ($this->userErrorsCount > 0) {
-                    $this->getQuestion('errors');
-                } else if ($this->userSuccessCount > 0) {
-                    $this->getQuestion('success');
-                // } else if ($this->userStableSuccessCount > 0) {
-                //     $this->getQuestion('stableSuccess');
-                } else {
-                    // WIN
+                $this->getQuestion('new');
+            }
+        // for expert
+        } else {
+            // if first today visit
+            if ($this->userTodayCount >= 120 && $this->userTodayCount <= 140 &&
+                $this->userStableSuccessCount > 0) {
                     $this->getQuestion('stableSuccess');
-                }
+            // processing errors
+            } else if ($this->userStableErrorsCount > 0) {
+                $this->getQuestion('stableErrors');
+            } else if ($this->userErrorsCount > 0) {
+                $this->getQuestion('errors');
+            } else if ($this->userSuccessCount > 0) {
+                $this->getQuestion('success');
+            // WIN
+            } else {
+                $this->getQuestion('stableSuccess');
             }
         }
     }
 
-    // @param: $status = (str) new || errors || stableErrors || success || stableSuccess
+    // @param $status = (str) new || errors || stableErrors || success || stableSuccess
     public function getQuestion($status)
     {
         $dbh = $this->getConnection();
