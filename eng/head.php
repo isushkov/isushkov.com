@@ -1,27 +1,21 @@
-<?php
-spl_autoload_register(function ($class) {
-    include 'classes/' . $class . '.php';
-});
-$head = new Head();
-?>
 <div class="head">
     <div class="head-content">
         <div class="head-content-left">
-            <?php if ($head->showBlock('home')): ?>
+            <?php if ($render->showBlock('home')): ?>
                 <a href="home.php" class="link-index">На главную</a>
             <?php endif ?>
-            <?php if ($head->userLogin() && $head->showBlock('profile')): ?>
+            <?php if ($render->userLogin() && $render->showBlock('profile')): ?>
                 <a href="profile.php" class="link-profile">Мой профиль</a>
             <?php endif ?>
         </div>
         <div class="head-content-right">
-            <?php if ($head->userLogin()): ?>
+            <?php if ($render->userLogin()): ?>
                 <a href="logout.php" class="link-exit">Выйти</a>
             <?php else: ?>
-                <?php if ($head->showBlock('login')): ?>
+                <?php if ($render->showBlock('login')): ?>
                     <a href="login.php" class="link-login">Войти</a>
                 <?php endif ?>
-                <?php if ($head->showBlock('register')): ?>
+                <?php if ($render->showBlock('register')): ?>
                     <a href="register.php" class="link-register">Зарегистрироваться</a>
                 <?php endif ?>
             <?php endif ?>

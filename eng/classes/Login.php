@@ -6,12 +6,11 @@ class Login extends App
     public $loginErrors = null;
 
     public function summary() {
-        // checkRedirect
-        if (isset($_COOKIE['hash']) && isset($_SESSION['user_id'])) { 
+        if ($this->userLogin()) { 
             header("Location: profile.php");
             exit();
         }
-
+        $this->getTheme();
         $this->getDeleteUserMessage();
         $this->getErrorsMessages();
 
@@ -52,8 +51,6 @@ class Login extends App
         if (isset($_SESSION['delete_user'])) {
             if ($_SESSION['delete_user'] === 1) {
                 $this->deleteUser = true;
-            } else {
-                echo 'session_delete_user status faled'; die;
             }
             unset($_SESSION['delete_user']);
         }
@@ -63,11 +60,8 @@ class Login extends App
         if (isset($_SESSION['error'])) {
             if ($_SESSION['error'] === 1) {
                 $this->sessionError = 'Для входa необходимо авторизоваться';
-                unset($_SESSION['error']);
-            } else {
-                $this->sessionError = 'Ошибка сессии. Пожалуйста, войдите снова';
-                unset($_SESSION['error']);
             }
+            unset($_SESSION['error']);
         }
     }
 
