@@ -1,37 +1,40 @@
 <?php
 class DeleteProfile extends App
 {
-    public $errors = null;
+    function __construct()
+    {
+        $this->checkSession();
+        $this->deleteProfile();
+    }
 
-    public function summary() {
+    public function deleteProfile() {
+        $this->error = false;
         if (isset($_POST['submit'])) {
-            $this->errors = array();
             if ($_POST['password'] !== $_POST['check-password']) {
-                $this->errors[] = "Пароли не совпадают";
+                $this->error = "Пароли не совпадают";
             } else {
                 $dbh = $this->getConnection();
-                $sth = $dbh->prepare("select * from users where hash = '".$_COOKIE['hash']."'");
+                $hash = $_COOKIE['hash'];
+                $sth = $dbh->prepare("select password from users where hash = '$hash'");
                 $sth->execute();
-                $userData = $sth->fetchAll(PDO::FETCH_ASSOC);
-
-                if (!password_verify($_POST['password'], $userData[0]['password'])) {
-                    $this->errors[] = "Пароль не верный";
+                $userPassword = $sth->fetch(PDO::FETCH_COLUMN);
+                if (!password_verify($_POST['password'], $userPassword)) {
+                    $this->error = "Пароль не верный";
                 }
             }
-            if (count($this->errors) == 0) {
+            if (!$this->error) {
                 $dbh = $this->getConnection();
-                $sth = $dbh->prepare("delete from users where id = '".$this->userId."'");
+                $sth = $dbh->prepare("delete from users where id = '$this->userId'");
                 $sth->execute();
-                $sth = $dbh->prepare("delete from progress where user_id = '".$this->userId."'");
+                $sth = $dbh->prepare("delete from progress where user_id = '$this->userId'");
                 $sth->execute();
-                $sth = $dbh->prepare("delete from progress850 where user_id = '".$this->userId."'");
+                $sth = $dbh->prepare("delete from progress850 where user_id = '$this->userId'");
                 $sth->execute();
                 //add message
                 $_SESSION['delete_user'] = 1;
 
-                unset($_SESSION['error']);
-                unset($_SESSION['user_id']);
                 setcookie('hash', '', time() - 60*60*24*3, '/');
+                unset($_SESSION['user_id']);
                 header("Location: login.php");
                 exit();
             }
