@@ -4,40 +4,30 @@ spl_autoload_register(function ($class) {
 });
 session_start();
 $render = new Learn();
-$render->allVocabulary = null;
-$render->allVocabularyIds = null;
-$render->userVocabulary = null;
-$render->userVocabularyIds = null;
-
 $pageTitle = 'Учить английскую лексику';
 ?>
-<head>
-    <title><?php echo $pageTitle ?></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <?php echo $render->userThemeRender ?>
-</head>
+<?php include('header.php'); ?>
 <body>
     <?php include('head.php'); ?>
     <div class="wrapper">
         <div class="question">
             <div class="history">
-                <?php if ($render->userTodayCount >= $render->todayNeedCheckYellow): ?>
+                <?php if ($render->todayCount >= $render->todayNeedCheckYellow): ?>
                     <div class="today-red">
-                <?php elseif ($render->userTodayCount >= $render->todayNeedCheckGreen && $render->userTodayCount < $render->todayNeedCheckYellow): ?>
+                <?php elseif ($render->todayCount >= $render->todayNeedCheckGreen
+                    && $render->todayCount < $render->todayNeedCheckYellow): ?>
                     <div class="today-yellow">
-                <?php elseif ($render->userTodayCount < $render->todayNeedCheckGreen): ?>
+                <?php elseif ($render->todayCount < $render->todayNeedCheckGreen): ?>
                     <div class="today-green">
                 <?php endif ?>
-                    <?php if ($render->userTodayCount != 0): ?>
+                    <?php if ($render->todayCount != 0): ?>
                         <div align="center">
-                            Сегодня осталось ответить на <span class="today-yellow2"><?php echo $render->userTodayCount ?></span>
-                            <?php if ($render->userTodayCount > 4): ?>
+                            Сегодня осталось ответить на <span class="today-yellow2"><?php echo $render->todayCount ?></span>
+                            <?php if ($render->todayCount > 4): ?>
                                 вопросов
-                            <?php elseif ($render->userTodayCount > 1): ?>
+                            <?php elseif ($render->todayCount > 1): ?>
                                 вопросa
-                            <?php elseif ($render->userTodayCount = 1): ?>
+                            <?php elseif ($render->todayCount == 1): ?>
                                 вопрос
                             <?php endif ?>
                         </div>
@@ -69,6 +59,7 @@ $pageTitle = 'Учить английскую лексику';
                 <div class="question-content">
                     <div class="question-title">
                         <?php echo $render->currentQuestionEng ?>
+<?php die ?>
                     </div>
                     <div class="question-type-<?php echo $render->currentQuestionTypeClass ?>">
                         <?php echo $render->currentQuestionType ?>
