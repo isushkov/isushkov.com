@@ -4,11 +4,12 @@ class Register extends App
     public $errors = null;
 
     public function summary() {
-        // checkRedirect
-        if (isset($_COOKIE['hash']) && isset($_SESSION['user_id'])) { 
+        if ($this->userLogin()) { 
             header("Location: profile.php");
             exit();
         }
+        $this->getTheme();
+
         if (isset($_POST['submit'])) {
             $this->errors = array();
             // проверям логин

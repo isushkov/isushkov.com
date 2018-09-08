@@ -3,6 +3,11 @@ class DeleteProfile extends App
 {
     public $errors = null;
 
+    function __construct() {
+        $this->getTheme();
+        $this->summary();
+    }
+
     public function summary() {
         if (isset($_POST['submit'])) {
             $this->errors = array();
