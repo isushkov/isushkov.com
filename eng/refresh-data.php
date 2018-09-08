@@ -35,7 +35,3 @@ $pageTitle = $render->pageTitle;
         </div>
     </div>
 </body>
-<?php
-echo '<pre>';
-    var_dump($render);
-echo '</pre>';

@@ -341,11 +341,9 @@ class Learn extends Profile
         $variants[0] = $question['ru'];
         // get false variants
         $vocabularyDataRu = $this->getVocabularyData('ru');
-        // var_dump($vocabularyDataRu); die;
         $falseVariantsIds = array_rand($vocabularyDataRu, $this->countFalseVariants);
         $i = 1;
         foreach ($falseVariantsIds as $falseVariantId) {
-            // if falseVariant = questionRu
             while ($falseVariantId == $question['id']) {
                 $falseVariantId = array_rand($vocabularyDataRu, 1);
             }
