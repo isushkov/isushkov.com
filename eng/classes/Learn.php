@@ -1,16 +1,16 @@
 <?php
 class Learn extends Profile
 {
-    public $countFalseVariants = 3;
+    public $countFalseVariants = 9;
 
     public $todayNeedCheck = 150;
-    public $minWords = 20;
-    public $maxS = 10;
-    public $maxE = 5;
-    public $maxEE = 5;
+    public $minWords = 50;
+    public $maxS = 100;
+    public $maxE = 50;
+    public $maxEE = 30;
     public $lastSSQFailed = false;
 
-    function __construct() 
+    function __construct()
     {
         $this->checkSession();
 
@@ -70,7 +70,7 @@ class Learn extends Profile
             // try answer
             if ($_POST['answer'] == $this->lastQuestionRu) {
                 $this->questionResult = true;
-                if ($this->lastQuestionA > 0) { 
+                if ($this->lastQuestionA > 0) {
                     $this->updateUserVocabulary(true, true);
                 } else {
                     $this->lastQuestionA = 0;
@@ -79,7 +79,7 @@ class Learn extends Profile
             // false answer
             } else {
                 $this->questionResult = false;
-                if ($this->lastQuestionA > 0) { 
+                if ($this->lastQuestionA > 0) {
                     //SSQ
                     if ($this->lastQuestionStatus == 'Хорошо знаю') {
                         $this->resetSSProgress();
@@ -160,7 +160,7 @@ class Learn extends Profile
             }
         }
     }
-    
+
     public function getUserData($field = null)
     {
         $dbh = $this->getConnection();
@@ -191,7 +191,7 @@ class Learn extends Profile
             if ($progressCount < $this->minWords) {
                 $this->getQuestion('new');
             // if first today visits
-            } else if ($todayCount >= ($this->odayNeedCheck - 10)) {
+            } else if ($todayCount >= ($this->todayNeedCheck - 10)) {
                 $this->getQuestion('new');
             // if last today visits
             } else if ($todayCount > 0 && $todayCount <= 10 && $SScount >= 50) {
@@ -209,8 +209,8 @@ class Learn extends Profile
             }
         } else {
             // if first today visits
-            if ($todayCount <= ($this->odayNeedCheck - 10)
-                && $todayCount >= ($this->odayNeedCheck - 30)
+            if ($todayCount <= ($this->todayNeedCheck - 10)
+                && $todayCount >= ($this->todayNeedCheck - 30)
                 && $countSS > 0)
             {
                 $this->getQuestion('SS');
