@@ -27,13 +27,13 @@ $pageTitle = 'Регистрация нового пользователя';
             </div>
             <div class="login-form-item">
                 <div class="login-form-item-text">
-                    Пароль: 
+                    Пароль:
                 </div>
                 <input class="login-form-item-input" name="password" type="password"/>
             </div>
             <div class="login-form-item">
                 <div class="login-form-item-text">
-                    Повторите пароль: 
+                    Повторите пароль:
                 </div>
                 <input class="login-form-item-input" name="check-password" type="password"/>
             </div>
