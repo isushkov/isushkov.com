@@ -4,29 +4,20 @@ spl_autoload_register(function ($class) {
 });
 session_start();
 $render = new RefreshData();
-$render->checkSession();
-$render->summary();
-$pageTitle = 'Сброс данных - словарь 2';
+$pageTitle = $render->pageTitle;
 ?>
-<head>
-    <title><?php echo $pageTitle ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <?php echo $render->userThemeRender ?>
-</head>
+<?php include('header.php'); ?>
 <body>
     <?php include('head.php'); ?>
     <div class="login-wrapper">
         <div class="login">
             <div class="message-yellow">
-                После сброса данных восставновить их будет невозможно
+                Внимание! После сброса данных восставновить их будет невозможно
             </div>
-            <?php if (is_array($render->errors) && count($render->errors) > 0): ?>
-                <?php foreach($render->errors AS $error): ?>
-                    <div class="message-red">
-                        <?php echo $error ?>
-                    </div>
-                <?php endforeach ?>
+            <?php if ($render->error): ?>
+                <div class="message-red">
+                    <?php echo $render->error ?>
+                </div>
             <?php endif ?>
             <h1><?php echo $pageTitle ?></h1>
             <form class="login-form" method="post">
@@ -38,10 +29,13 @@ $pageTitle = 'Сброс данных - словарь 2';
                     <div class="login-form-item-text">Повторите пароль:</div>
                     <input class="login-form-item-input" name="check-password" type="password"/>
                 </div>
-                <input type="hidden" name="type_v" value="5000"/>
                 <button class="login-form-submit-red"
                     name="submit" type="submit" value="Удалить профиль">Сбросить данные</button>
             </form>
         </div>
     </div>
 </body>
+<?php
+echo '<pre>';
+    var_dump($render);
+echo '</pre>';

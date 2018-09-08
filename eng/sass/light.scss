@@ -531,6 +531,10 @@ a {
     border-right: 0; 
 }
 .profile {
+	&-blue {
+        background-color: #cfeaf8;
+        color: #323232;
+	}
 	&-green {
 		background-color: #d9ffd1;
 		color: #077100;
