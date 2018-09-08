@@ -4,15 +4,9 @@ spl_autoload_register(function ($class) {
 });
 session_start();
 $render = new DeleteProfile();
-
 $pageTitle = 'Удаление профиля';
 ?>
-<head>
-    <title><?php echo $pageTitle ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <?php echo $render->userThemeRender ?>
-</head>
+<?php include('header.php'); ?>
 <body>
     <?php include('head.php'); ?>
     <div class="login-wrapper">
@@ -20,12 +14,10 @@ $pageTitle = 'Удаление профиля';
             <div class="message-red">
                 Внимание! После уделения профиля восставновить данные будет невозможно
             </div>
-            <?php if (is_array($render->errors) && count($render->errors) > 0): ?>
-                <?php foreach($render->errors AS $error): ?>
-                    <div class="message-red">
-                        <?php echo $error ?>
-                    </div>
-                <?php endforeach ?>
+            <?php if ($render->error): ?>
+                <div class="message-red">
+                    <?php echo $render->error ?>
+                </div>
             <?php endif ?>
             <h1><?php echo $pageTitle ?></h1>
             <form class="login-form" method="post">
@@ -42,3 +34,7 @@ $pageTitle = 'Удаление профиля';
         </div>
     </div>
 </body>
+<?php
+echo '<pre>';
+    var_dump($render);
+echo '</pre>';

@@ -4,35 +4,26 @@ spl_autoload_register(function ($class) {
 });
 session_start();
 $render = new Login();
-$render->summary();
-
 $pageTitle = 'Вход в систему';
 ?>
-<head>
-    <title><?php echo $pageTitle ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <?php echo $render->userThemeRender ?>
-</head>
+<?php include('header.php'); ?>
 <body>
     <?php include('head.php'); ?>
     <div class="login">
-        <?php if (isset($render->deleteUser) && $render->deleteUser): ?>
+        <?php if ($render->deleteUser): ?>
             <div class="message-green">
                 Ваш профиль был удален
             </div>
         <?php endif ?>
-        <?php if (isset($render->sessionError)): ?>
+        <?php if ($render->sessionError): ?>
             <div class="message-red">
                 <?php echo $render->sessionError ?>
             </div>
         <?php endif ?>
-        <?php if ((bool)$render->loginErrors): ?>
-            <?php foreach ($render->loginErrors as $loginError): ?>
-                <div class="message-red">
-                    <?php echo $loginError ?>
-                </div>
-            <?php endforeach ?>
+        <?php if ($render->loginError): ?>
+            <div class="message-red">
+                <?php echo $render->loginError ?>
+            </div>
         <?php endif ?>
         <h1><?php echo $pageTitle ?></h1>
         <form class="login-form" method="post">
@@ -52,3 +43,7 @@ $pageTitle = 'Вход в систему';
         </form>
     </div>
 </body>
+<?php
+echo '<pre>';
+    var_dump($render);
+echo '</pre>';
