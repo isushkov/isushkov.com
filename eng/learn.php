@@ -59,7 +59,7 @@ $pageTitle = 'Учить английскую лексику';
                             </div>
                         </div>
                         <?php if ($render->lastSSQFailed): ?>
-                            <div class="today-red">Прогресс сброшен (S:1|E:0)</div>
+                            <div class="refresh-status">Прогресс сброшен (S:1|E:0)</div>
                         <?php endif ?>
                     <?php endif ?>
                 <?php endif ?>
@@ -103,7 +103,7 @@ $pageTitle = 'Учить английскую лексику';
             </div>
             <form class="form" method="post" action="learn.php">
                 <input name="question-id" value="<?php echo $render->questionId ?>" type="hidden"/>
-                <input name="lq_status" value="<?php $render->questionType ?>" type="hidden"/>
+                <input name="lq_status" value="<?php echo $render->questionType ?>" type="hidden"/>
                 <?php $i = 0; $j = 1 ?>
                 <div class="row-variant">
                     <?php foreach ($render->variants as $variant): ?>
