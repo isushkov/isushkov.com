@@ -2,9 +2,9 @@
 class Learn extends Profile
 {
     public $countFalseVariants = 9;
-
     public $todayNeedCheck = 150;
     public $minWords = 50;
+    public $maxSS = 50;
     public $maxS = 100;
     public $maxE = 50;
     public $maxEE = 30;
@@ -73,7 +73,6 @@ class Learn extends Profile
                 if ($this->lastQuestionA > 0) {
                     $this->updateUserVocabulary(true, true);
                 } else {
-                    $this->lastQuestionA = 0;
                     $this->updateUserVocabulary(true, false);
                 }
             // false answer
@@ -132,7 +131,7 @@ class Learn extends Profile
 
         $sth = $dbh->prepare(
             "update $this->progressTable set
-            summary = $lastQuestionA, success = $lastQuestionS, errors = $lastQuestionE where
+            summary = $this->lastQuestionA, success = $this->lastQuestionS, errors = $this->lastQuestionE where
             user_id = $this->userId and vocabulary_id = $this->lastQuestionId");
         $sth->execute();
         // today_count--
@@ -164,7 +163,7 @@ class Learn extends Profile
     public function getUserData($field = null)
     {
         $dbh = $this->getConnection();
-        if ($field == null) {
+        if ($field === null) {
             $sth = $dbh->prepare("select * from users where id = $this->userId");
             $sth->execute();
             return $sth->fetch(PDO::FETCH_ASSOC);
@@ -194,7 +193,7 @@ class Learn extends Profile
             } else if ($todayCount >= ($this->todayNeedCheck - 10)) {
                 $this->getQuestion('new');
             // if last today visits
-            } else if ($todayCount > 0 && $todayCount <= 10 && $SScount >= 50) {
+            } else if ($todayCount > 0 && $todayCount <= 10 && $countSS >= $this->maxSS) {
                 $this->getQuestion('SS');
             // processing errors
             } else if ($countEE > $this->maxEE) {
@@ -237,7 +236,7 @@ class Learn extends Profile
             $this->questionTypeClass = 'dark';
             // get new question
             $vocabularyIds = $this->getVocabularyData('id');
-            $progressIds = $this->getProgressData('id');
+            $progressIds = $this->getProgressData('vocabulary_id');
             $questionIds = array_diff($vocabularyIds, $progressIds);
         } else {
             // processing status
@@ -260,7 +259,7 @@ class Learn extends Profile
                 $this->questionType = 'Знаю';
                 $this->questionTypeClass = 'yellow';
                 $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where
-                    success - errors = 0 and
+                    success - errors > 0 and
                     success - errors <= 3 and
                     user_id = $this->userId");
             }
@@ -326,11 +325,11 @@ class Learn extends Profile
     {
         $dbh = $this->getConnection();
         if ($field == null) {
-            $sth = $dbh->prepare("select * from $this->progressTable");
+            $sth = $dbh->prepare("select * from $this->progressTable where user_id = $this->userId");
             $sth->execute();
             return $sth->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            $sth = $dbh->prepare("select $field from $this->progressTable");
+            $sth = $dbh->prepare("select $field from $this->progressTable where user_id = $this->userId");
             $sth->execute();
             return $sth->fetchAll(PDO::FETCH_COLUMN);
         }
