@@ -244,14 +244,14 @@ class Learn extends Profile
                 $this->questionType = 'He знаю';
                 $this->questionTypeClass = 'red2';
                 $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where
-                    errors - success > 2 and
+                    errors - success >= 2 and
                     user_id = $this->userId");
             }
             if ($status === 'E') {
                 $this->questionType = 'Плохо знаю';
                 $this->questionTypeClass = 'red';
                 $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where
-                    errors - success <= 2 and
+                    errors - success <= 1 and
                     errors - success >= 0 and
                     user_id = $this->userId");
             }
@@ -259,7 +259,7 @@ class Learn extends Profile
                 $this->questionType = 'Знаю';
                 $this->questionTypeClass = 'yellow';
                 $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where
-                    success - errors > 0 and
+                    success - errors >= 1 and
                     success - errors <= 3 and
                     user_id = $this->userId");
             }
@@ -267,7 +267,7 @@ class Learn extends Profile
                 $this->questionType = 'Хорошо знаю';
                 $this->questionTypeClass = 'green';
                 $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where
-                    success - errors > 3 and
+                    success - errors >= 4 and
                     user_id = $this->userId");
             }
             $sth->execute();
