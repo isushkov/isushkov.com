@@ -123,25 +123,25 @@ $pageTitle = 'Учить английскую лексику';
                         <div class="statistic-row-item">
                             Хорошо знаю: <span class="statistic-gray">
                                 <span class="statistic-green"><?php echo $countSS ?></span>
-                                (S-E&#8805;4)
+                                S-E&#8805;4
                             </span>
                         </div>
                         <div class="statistic-row-item">
                             Знаю: <span class="statistic-gray">
                                 <span class="statistic-yellow"><?php echo $countS ?></span>
-                                (S-E&#8805;1)
+                                S-E&#8805;1
                             </span>
                         </div>
                         <div class="statistic-row-item">
                             Плохо знаю: <span class="statistic-gray">
                                 <span class="statistic-red"><?php echo $countE ?></span>
-                                (E-S&#8804;0)
+                                E-S&#8805;0
                             </span>
                         </div>
                         <div class="statistic-row-item">
                             Не знаю: <span class="statistic-gray">
                                 <span class="statistic-red"><?php echo $countEE ?></span>
-                                (E-S&#8804;2)
+                                E-S&#8805;2
                             </span>
                         </div>
                     </div>
