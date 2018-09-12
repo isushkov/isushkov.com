@@ -626,3 +626,16 @@ a {
     border-left: 0; 
     border-right: 0; 
 }
+.refresh-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    text-align: center;
+    background-color: rgba(255,0,0,.1);
+    color: rgba(164, 22, 22, 1);
+    border-radius: 0 0 3px 3px;
+}
+.statistic-gray {
+    color: #3e3e3e;
+}

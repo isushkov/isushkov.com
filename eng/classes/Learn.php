@@ -2,9 +2,9 @@
 class Learn extends Profile
 {
     public $countFalseVariants = 9;
-
     public $todayNeedCheck = 150;
     public $minWords = 50;
+    public $maxSS = 50;
     public $maxS = 100;
     public $maxE = 50;
     public $maxEE = 30;
@@ -73,7 +73,6 @@ class Learn extends Profile
                 if ($this->lastQuestionA > 0) {
                     $this->updateUserVocabulary(true, true);
                 } else {
-                    $this->lastQuestionA = 0;
                     $this->updateUserVocabulary(true, false);
                 }
             // false answer
@@ -132,7 +131,7 @@ class Learn extends Profile
 
         $sth = $dbh->prepare(
             "update $this->progressTable set
-            summary = $lastQuestionA, success = $lastQuestionS, errors = $lastQuestionE where
+            summary = $this->lastQuestionA, success = $this->lastQuestionS, errors = $this->lastQuestionE where
             user_id = $this->userId and vocabulary_id = $this->lastQuestionId");
         $sth->execute();
         // today_count--
@@ -164,7 +163,7 @@ class Learn extends Profile
     public function getUserData($field = null)
     {
         $dbh = $this->getConnection();
-        if ($field == null) {
+        if ($field === null) {
             $sth = $dbh->prepare("select * from users where id = $this->userId");
             $sth->execute();
             return $sth->fetch(PDO::FETCH_ASSOC);
@@ -242,7 +241,7 @@ class Learn extends Profile
             $this->questionTypeClass = 'dark';
             // get new question
             $vocabularyIds = $this->getVocabularyData('id');
-            $progressIds = $this->getProgressData('id');
+            $progressIds = $this->getProgressData('vocabulary_id');
             $questionIds = array_diff($vocabularyIds, $progressIds);
         } else {
             // processing status
@@ -250,14 +249,14 @@ class Learn extends Profile
                 $this->questionType = 'He знаю';
                 $this->questionTypeClass = 'red2';
                 $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where
-                    errors - success > 2 and
+                    errors - success >= 2 and
                     user_id = $this->userId");
             }
             if ($status === 'E') {
                 $this->questionType = 'Плохо знаю';
                 $this->questionTypeClass = 'red';
                 $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where
-                    errors - success <= 2 and
+                    errors - success <= 1 and
                     errors - success >= 0 and
                     user_id = $this->userId");
             }
@@ -265,7 +264,7 @@ class Learn extends Profile
                 $this->questionType = 'Знаю';
                 $this->questionTypeClass = 'yellow';
                 $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where
-                    success - errors = 0 and
+                    success - errors >= 1 and
                     success - errors <= 3 and
                     user_id = $this->userId");
             }
@@ -273,7 +272,7 @@ class Learn extends Profile
                 $this->questionType = 'Хорошо знаю';
                 $this->questionTypeClass = 'green';
                 $sth = $dbh->prepare("select vocabulary_id from $this->progressTable where
-                    success - errors > 3 and
+                    success - errors >= 4 and
                     user_id = $this->userId");
             }
             $sth->execute();
@@ -331,11 +330,11 @@ class Learn extends Profile
     {
         $dbh = $this->getConnection();
         if ($field == null) {
-            $sth = $dbh->prepare("select * from $this->progressTable");
+            $sth = $dbh->prepare("select * from $this->progressTable where user_id = $this->userId");
             $sth->execute();
             return $sth->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            $sth = $dbh->prepare("select $field from $this->progressTable");
+            $sth = $dbh->prepare("select $field from $this->progressTable where user_id = $this->userId");
             $sth->execute();
             return $sth->fetchAll(PDO::FETCH_COLUMN);
         }

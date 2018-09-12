@@ -46,21 +46,21 @@ class Profile extends App
         // processing status
         if ($status == 'EE') {
             $sth = $dbh->prepare("select count(*) from $progressTable where
-                errors - success > 2 and
+                errors - success >= 2 and
                 user_id = $this->userId");
         } else if ($status == 'E') {
             $sth = $dbh->prepare("select count(*) from $progressTable where
-                errors - success <= 2 and
+                errors - success <= 1 and
                 errors - success >= 0 and
                 user_id = $this->userId");
         } else if ($status == 'S') {
             $sth = $dbh->prepare("select count(*) from $progressTable where
-                success - errors > 0 and
+                success - errors >= 1 and
                 success - errors <= 3 and
                 user_id = $this->userId");
         } else if ($status == 'SS') {
             $sth = $dbh->prepare("select count(*) from $progressTable where
-                success - errors > 3 and
+                success - errors >= 4 and
                 user_id = $this->userId");
         }
         $sth->execute();

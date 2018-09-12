@@ -59,7 +59,7 @@ $pageTitle = 'Учить английскую лексику';
                             </div>
                         </div>
                         <?php if ($render->lastSSQFailed): ?>
-                            <div class="today-red">Прогресс сброшен (S:1|E:0)</div>
+                            <div class="refresh-status">Прогресс сброшен (S:1|E:0)</div>
                         <?php endif ?>
                     <?php endif ?>
                 <?php endif ?>
@@ -103,7 +103,7 @@ $pageTitle = 'Учить английскую лексику';
             </div>
             <form class="form" method="post" action="learn.php">
                 <input name="question-id" value="<?php echo $render->questionId ?>" type="hidden"/>
-                <input name="lq_status" value="<?php $render->questionType ?>" type="hidden"/>
+                <input name="lq_status" value="<?php echo $render->questionType ?>" type="hidden"/>
                 <?php $i = 0; $j = 1 ?>
                 <div class="row-variant">
                     <?php foreach ($render->variants as $variant): ?>
@@ -121,16 +121,28 @@ $pageTitle = 'Учить английскую лексику';
                 <div class="statistic">
                     <div class="statistic-row">
                         <div class="statistic-row-item">
-                            Хорошо знаю: <span class="statistic-green"><?php echo $countSS ?></span>
+                            Хорошо знаю: <span class="statistic-gray">
+                                <span class="statistic-green"><?php echo $countSS ?></span>
+                                S-E&#8805;4
+                            </span>
                         </div>
                         <div class="statistic-row-item">
-                            Знаю: <span class="statistic-yellow"><?php echo $countS ?></span>
+                            Знаю: <span class="statistic-gray">
+                                <span class="statistic-yellow"><?php echo $countS ?></span>
+                                S-E&#8805;1
+                            </span>
                         </div>
                         <div class="statistic-row-item">
-                            Плохо знаю: <span class="statistic-red"><?php echo $countE ?></span>
+                            Плохо знаю: <span class="statistic-gray">
+                                <span class="statistic-red"><?php echo $countE ?></span>
+                                E-S&#8805;0
+                            </span>
                         </div>
                         <div class="statistic-row-item">
-                            Не знаю: <span class="statistic-red"><?php echo $countEE ?></span>
+                            Не знаю: <span class="statistic-gray">
+                                <span class="statistic-red"><?php echo $countEE ?></span>
+                                E-S&#8805;2
+                            </span>
                         </div>
                     </div>
                     <div class="statistic-row">
