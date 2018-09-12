@@ -129,8 +129,11 @@ h1 {
             background-color: #f8cfcf;
             color: #920000;
             margin: 0;
-            @media (min-width: 400px) {
+            @media (min-width: 401px) {
 				border-radius: 0 3px 3px 0;
+			}
+            @media (max-width: 400px) {
+				border-radius: 0 0 3px 0;
 			}
         }
     }
@@ -189,31 +192,31 @@ h1 {
 			&-dark {
 				background-color: #fff;
 				margin: 0;
-                border-radius: 0 0 0 3px;
+                border-radius: 0 0 3px 3px;
 			}
 			&-yellow {
 				background-color: #fff9ac;
 				color: #8d7300;
 				margin: 0;
-                border-radius: 0 0 0 3px;
+                border-radius: 0 0 3px 3px;
 			}
 			&-red {
 				background-color: #ffe2e2;
 				color: #9e0000;
 				margin: 0;
-                border-radius: 0 0 0 3px;
+                border-radius: 0 0 3px 3px;
 			}
 			&-red2 {
 				background-color: #ffb3b3;
 				color: #9e0000;
 				margin: 0;
-                border-radius: 0 0 0 3px;
+                border-radius: 0 0 3px 3px;
 			}
 			&-green {
 				background-color: #d9ffd1;
 				color: #077100;
 				margin: 0;
-				border-radius: 0 0 0 3px;
+				border-radius: 0 0 3px 3px;
 			}
 		}
     }

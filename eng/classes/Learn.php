@@ -14,6 +14,8 @@ class Learn extends Profile
     {
         $this->checkSession();
 
+        $this->todayNeedCheckYellow = (int)($this->todayNeedCheck / 3) * 2;
+        $this->todayNeedCheckGreen = (int)($this->todayNeedCheck / 3);
         $this->todayCount = $this->getUserData('today_count');
         $this->typeVocabulary = $this->getUserData('type_vocabulary');
         if ($this->typeVocabulary == '850') {
@@ -26,8 +28,6 @@ class Learn extends Profile
 
         $this->progressingPostData();
 
-        $this->todayNeedCheckYellow = (int)($this->todayNeedCheck / 3) * 2;
-        $this->todayNeedCheckGreen = (int)($this->todayNeedCheck / 3);
         $this->progressCount = $this->getProgressCount($this->typeVocabulary);
         $this->vocabularyCount = $this->getVocabularyCount($this->typeVocabulary);
         $this->countSS = $this->getProgressCount($this->typeVocabulary, 'SS');
@@ -185,6 +185,8 @@ class Learn extends Profile
         $countS          = $this->countS;
         $countE          = $this->countE;
         $countEE         = $this->countEE;
+        $todayCheckG     = $this->todayNeedCheckGreen;
+        $todayCheckY     = $this->todayNeedCheckYellow;
 
         if ($progressCount < $vocabularyCount) {
             // started quantity
@@ -193,8 +195,10 @@ class Learn extends Profile
             // if first today visits
             } else if ($todayCount >= ($this->todayNeedCheck - 10)) {
                 $this->getQuestion('new');
-            // if last today visits
-            } else if ($todayCount > 0 && $todayCount <= 10 && $SScount >= 50) {
+            // get SS
+            } else if ($countSS >= 300 && $todayCount > $todayCheckY && $todayCount <= $todayCheckY + 10) {
+                $this->getQuestion('SS');
+            } else if ($countSS >= 50 && $todayCount > $todayCheckG && $todayCount <= $todayCheckG + 10) {
                 $this->getQuestion('SS');
             // processing errors
             } else if ($countEE > $this->maxEE) {
@@ -208,11 +212,12 @@ class Learn extends Profile
                 $this->getQuestion('new');
             }
         } else {
-            // if first today visits
-            if ($todayCount <= ($this->todayNeedCheck - 10)
-                && $todayCount >= ($this->todayNeedCheck - 30)
-                && $countSS > 0)
-            {
+            // get SS
+            if ($countSS > 0 && $todayCount >= $this->todayNeedCheck - 10) {
+                $this->getQuestion('SS');
+            } else if ($countSS >= 300 && $todayCount > $todayCheckY && $todayCount <= $todayCheckY + 10) {
+                $this->getQuestion('SS');
+            } else if ($countSS >= 50 && $todayCount > $todayCheckG && $todayCount <= $todayCheckG + 10) {
                 $this->getQuestion('SS');
             // processing errors
             } else if ($countEE > 0) {
@@ -344,11 +349,10 @@ class Learn extends Profile
         $falseVariantsIds = array_rand($vocabularyDataRu, $this->countFalseVariants);
         $i = 1;
         foreach ($falseVariantsIds as $falseVariantId) {
-            while ($falseVariantId == $question['id']) {
-                $falseVariantId = array_rand($vocabularyDataRu, 1);
+            if ($falseVariantId != $question['id']) {
+                $variants[$i] = $vocabularyDataRu[$falseVariantId];
+                $i++;
             }
-            $variants[$i] = $vocabularyDataRu[$falseVariantId];
-            $i++;
         }
         $i = null;
         shuffle($variants);

@@ -100,7 +100,7 @@ h1 {
         border: #000 solid 1px;
         border-radius: 3px 3px 0 0;
         border-bottom: 0;
-        @media (max-width: 400px) {
+        @media (max-width: 600px) {
             border-radius: 0;
         }
     }
@@ -123,12 +123,14 @@ h1 {
 			background-color: rgba(255, 0, 0,.1);
 			color: rgba(164, 22, 22, 1);
             margin: 0;
-            @media (min-width: 400px) {
+            @media (min-width: 401px) {
 				border-radius: 0 2px 2px 0;
+			}
+            @media (max-width: 400px) {
+				border-radius: 0 0 3px 0;
 			}
         }
     }
-// !!!
     &-type {
         background-color: #fff;
         border-radius: 3px 0 0 3px;
@@ -197,30 +199,35 @@ h1 {
 				background-color: #111;
 				color: #757575;
 				margin: 0;
+                border-radius: 0 0 3px 3px;
 			}
 			&-yellow {
 				border-right: 0;
 				background-color: rgba(255, 221, 0,.1);
 				color: rgba(255, 221, 100, .8);
 				margin: 0;
+				border-radius: 0 0 3px 3px;
 			}
 			&-red {
 				border-right: 0;
 				background-color: rgba(255, 0, 0,.1);
 				color: rgba(164, 22, 22, 1);
 				margin: 0;
+				border-radius: 0 0 3px 3px;
 			}
 			&-red2 {
 				border-right: 0;
 				background-color: rgba(255, 0, 0, 0.22);
 				color: #b10101;
 				margin: 0;
+				border-radius: 0 0 3px 3px;
 			}
 			&-green {
 				border-right: 0;
 				background-color: rgba(10,226,100,.08);
 				color: rgba(105,226,100,.8);
 				margin: 0;
+				border-radius: 0 0 3px 3px;
 			}
 		}
     }
@@ -312,6 +319,9 @@ h1 {
     border: #000 solid 1px;
     border-radius: 0 0 3px 3px;
     border-top: 0;
+    @media (max-width: 600px) {
+        border-radius: 0;
+    }
 }
 .change-vocabulary {
 	border-radius: 3px;
